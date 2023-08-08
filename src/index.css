@@ -2,9 +2,21 @@
     fill: red;
 }
 
-.test-box {
-    background-color: red;
-    width: 100px;
-    height: 100px;
+
+/* Timer.js */
+.timerBody {
+    width: 80%;
+    height: 20px;
+    background-color: #00274aff;
+    display: flex;
+    align-items: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.timeRemaining {
+    width: 100%;
+    height: 10px;
+    background-color: #FFFF;
 }
 

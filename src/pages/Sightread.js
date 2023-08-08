@@ -4,6 +4,7 @@ import { useEffect, useMemo, useRef, useState } from "react"
 import { useOutletContext } from "react-router"
 import KeySelector from "../components/KeySelector"
 import * as Tone from "tone"
+import Timer from "../components/Timer"
 
 
 export default function Sightread() {
@@ -48,6 +49,10 @@ export default function Sightread() {
     setKeySignature(x)
   }
 
+  const resetCombo = (() => {
+    setCombo(0)
+  })
+
   return (
     <div className="sightread">
       <SingleNote note={note} keySignature={keySignature}></SingleNote>
@@ -55,6 +60,7 @@ export default function Sightread() {
       <h1>Combo: {combo}</h1>
       <h1>Highest Combo: {highestCombo}</h1>
       <button onClick={toggleMute}>Mute</button>
+      <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
     </div>
   )
 }
