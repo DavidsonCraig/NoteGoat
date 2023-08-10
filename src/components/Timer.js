@@ -18,19 +18,19 @@ const Timer = (props) => {
         if (combo != 0) {
             timeoutRef.current = setTimeout(() => {
                 resetCombo()
-            }, comboTime)
+            }, comboTime - (Math.min((combo * 100), 2500)))
 
             animeRef.current = anime ({
                 targets: ".timeRemaining",
                 width: 0.1,
                 easing: "linear",
-                duration: comboTime,
+                duration: comboTime - (Math.min((combo * 100), 2500)),
             })
         }
     },[combo])
 
     return ( 
-        <div className="timer-container">
+        <div className="timerContainer">
             <div className="timerBody">
                 <div className="timeRemaining">
 

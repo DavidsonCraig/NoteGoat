@@ -7,16 +7,50 @@ import {transformSingleMIDI} from "../functions/transformSingleMIDI"
 export default function SingleNote(props) {
   let note = props.note
   let keySignature = props.keySignature
+
   let prevNote = useRef(0)
+  const [trebleNote, setTrebleNote] = useState("C")
+  const [bassNote, setBassNote] = useState("")
+
   let outletContext = useOutletContext()
   let notesDown = outletContext.notesDown
-  //render
+  // Note handling
   useEffect(() => {
-    abcjs.renderAbc("paper", `K: ${keySignature}\n` + transformSingleMIDI(note,keySignature), { 
+    let x = transformSingleMIDI(note,keySignature)
+    if (note >= 60) {
+      setBassNote("")
+      setTrebleNote(x)
+    } else {
+      setBassNote(x)
+      setTrebleNote("")
+    }
+  },[note,keySignature])
+
+  // render
+  useEffect(() => {
+    abcjs.renderAbc(
+      "paper", 
+      `K: ${keySignature}\n` + 
+      `%%staves {(RH) (LH)}
+      V:RH clef=treble
+      V:LH clef=bass
+      V: RH
+      L: 1/4
+      ${trebleNote}
+      V: LH
+      ${bassNote}` 
+      , { 
       add_classes: true, 
-      scale: 5,
+      responsive: "resize",
+      selectionColor: "#000000", 
+      paddingtop: 0,
+      paddingbottom: 0,
+      paddingleft: 210,
+      paddingright: 0,
+      viewportHorizontal: true,
      });
-  }, [note,keySignature])
+     document.querySelectorAll(".abcjs-bar").forEach(element => element.classList.add("invisible"))
+  }, [trebleNote,keySignature])
   
   useEffect(() => {
     let l = Object.keys(notesDown).length
@@ -53,9 +87,8 @@ export default function SingleNote(props) {
 
   return (
     <div className="singleNote">
-      <div id="spacer"></div>
       <div id="paper"></div>
-      <div id="space"></div>
+      <div className="test"></div>
     </div>
   )
 }

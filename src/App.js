@@ -6,7 +6,7 @@ import {
   } from "react-router-dom";
 
 //pages
-import Sightread from "./pages/Sightread";
+import SightRead from "./pages/SightRead";
 import Splash from "./pages/Splash";
 import Main from "./pages/Main";
 import Performance from "./pages/Performance";
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout></RootLayout>}>
       <Route index element={<Splash></Splash>}></Route>
       <Route path="main" element={<Main></Main>}></Route>
-      <Route path="sightread" element={<Sightread></Sightread>}></Route>
+      <Route path="sightread" element={<SightRead></SightRead>}></Route>
       <Route path="performance" element={<Performance></Performance>}></Route>
       <Route path="settings" element={<Settings></Settings>}></Route>
     </Route>

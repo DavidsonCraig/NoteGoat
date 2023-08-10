@@ -2,8 +2,46 @@
     fill: red;
 }
 
+/* Root */
+html {
+    height: 100%;
+}
 
+body {
+    margin: 0px;
+    height: 100%;
+}
+
+#root {
+    height: 100%;
+}
+
+/* Root Layout */
+.rootLayout {
+    height: 100%;
+}
+
+/* Sight read */
+.sightRead {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* SingleNote.js */
+.singleNote {
+    width: 100%;
+}
+
+.invisible {
+    opacity: 0;
+}
 /* Timer.js */
+.timerContainer {
+    display: flex;
+    justify-content: center;
+}
+
 .timerBody {
     width: 80%;
     height: 20px;
@@ -18,5 +56,78 @@
     width: 100%;
     height: 10px;
     background-color: #FFFF;
+}
+
+/* Piano Helper */
+.pianoHelperContainer {
+    width: 100%;
+    height: 20vh;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+}
+
+.pianoHelperInnerContainer {
+    width: 100%;
+    height: 20vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    display: block;
+    position: relative;
+}
+
+.whiteNotes {
+    width: 100%;
+    height: 20vh;
+    background-color: rgb(144, 50, 50);
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.whiteNote {
+    flex-grow: 1;
+    background-color: rgb(255, 255, 255);
+    border-color: black;
+    border: 1px;
+    border-style: solid;
+}
+
+.blackNotes {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.blackNote {
+    background-color: black;
+    flex-grow: 1;
+    margin-left: 2px;
+    margin-right: 2px;
+    border-color: black;
+    border: 1px;
+    border-style: solid;
+}
+
+.halfSpacer {
+    flex-grow: 0.5;
+    opacity: 0;
+}
+
+.fullSpacer {
+    flex-grow: 1;
+    opacity: 0;
+}
+
+
+
+/* Key Selector */
+.keySelector {
+    display: flex;
+    justify-content: center;
 }
 

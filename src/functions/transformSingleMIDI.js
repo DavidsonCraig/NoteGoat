@@ -1,4 +1,5 @@
 export function transformSingleMIDI(MIDInote, keySignature) {
+    let pitch
     let o = {
         // //sharp
         // "Help": ['c','c#','d','d#','e','f','f#','g','g#','a','a#','b'],
@@ -42,6 +43,106 @@ export function transformSingleMIDI(MIDInote, keySignature) {
         "Ebmin": ['=C','D','=D','E','=E','F','G','=G','A','=A','B','C\''],
         "Abmin": ['=C','D','=D','E','F','=F','G','=G','A','=A','B','C\''],
     }
+    //Spacers
+    let frontSpacer = {
+        //Chromatic
+        "Cmaj": "||||||||||",
+        "Amin": "||||||||||",
+        //Sharp major keys
+        "Gmaj": "|||||||||",
+        "Dmaj": "|||||||||",
+        "Amaj": "|||||||||",
+        "Emaj": "|||||||||", 
+        "Bmaj": "||||||||", 
+        "F#maj": "|||||||||",
+        "C#maj": "||||||||",
+        //Flat major keys
+        "Fmaj": "|||||||||",
+        "Bbmaj": "|||||||||",
+        "Ebmaj": "|||||||||",
+        "Abmaj": "|||||||||", 
+        "Dbmaj": "||||||||", 
+        "Gbmaj": "|||||||||",
+        "Cbmaj": "||||||||",
+        //Sharp minor keys
+        "Emin": "|||||||||",
+        "Bmin": "|||||||||",
+        "F#min": "|||||||||",
+        "C#min": "|||||||||", 
+        "G#min": "||||||||", 
+        "D#min": "|||||||||",
+        "A#min": "||||||||",
+        //Flat minor keys 
+        "Dmin": "|||||||||",
+        "Gmin": "|||||||||",
+        "Cmin": "|||||||||",
+        "Fmin": "|||||||||", 
+        "Bbmin": "||||||||", 
+        "Ebmin": "|||||||||",
+        "Abmin": "||||||||",
+    }
+
+    let backSpacer = {
+        //Chromatic
+        "Cmaj": "||||||||||||||||",
+        "Amin": "||||||||||||||||",
+        //Sharp major keys
+        "Gmaj": "|||||||||||||||||",
+        "Dmaj": "|||||||||||||||||",
+        "Amaj": "|||||||||||||||||||",
+        "Emaj": "|||||||||||||||||||", 
+        "Bmaj": "|||||||||||||||||||", 
+        "F#maj": "|||||||||||||||||||||",
+        "C#maj": "||||||||||||||||||||||",
+        //Flat major keys
+        "Fmaj": "|||||||||||||||||",
+        "Bbmaj": "|||||||||||||||||",
+        "Ebmaj": "|||||||||||||||||||",
+        "Abmaj": "|||||||||||||||||||", 
+        "Dbmaj": "|||||||||||||||||||", 
+        "Gbmaj": "|||||||||||||||||||||",
+        "Cbmaj": "||||||||||||||||||||||",
+        //Sharp minor keys
+        "Emin": "|||||||||||||||||",
+        "Bmin": "|||||||||||||||||",
+        "F#min": "|||||||||||||||||||",
+        "C#min": "|||||||||||||||||||", 
+        "G#min": "|||||||||||||||||||", 
+        "D#min": "|||||||||||||||||||||",
+        "A#min": "||||||||||||||||||||||",
+        //Flat minor keys 
+        "Dmin": "|||||||||||||||||",
+        "Gmin": "|||||||||||||||||",
+        "Cmin": "|||||||||||||||||||",
+        "Fmin": "|||||||||||||||||||", 
+        "Bbmin": "|||||||||||||||||||", 
+        "Ebmin": "|||||||||||||||||||||",
+        "Abmin": "||||||||||||||||||||||",
+    }
+
+    switch(Math.floor(MIDInote/12)) {
+        case 3:
+            pitch = ",,"
+            break
+        case 4:
+            pitch = ","
+            break
+        case 5:
+            pitch = ""
+            break
+        case 6:
+            pitch = "'"
+            break
+        case 7:
+            pitch = "''"
+            break
+        default:
+            pitch = ""
+            break
+    }
+
     let n = o[keySignature][MIDInote % 12]
-    return n
+    // return spacer[keySignature] + n + pitch + "||||||||||"
+    return frontSpacer[keySignature] + n + pitch + backSpacer[keySignature]
+
 }

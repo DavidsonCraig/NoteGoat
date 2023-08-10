@@ -51,7 +51,7 @@ export default function RootLayout() {
             release: 1,
             baseUrl: "https://tonejs.github.io/audio/salamander/",
         }).toDestination()
-        console.log("Piano instantiated")
+
         return pianoSynth
     },[])
 
@@ -123,9 +123,17 @@ export default function RootLayout() {
         }
     })
 
+    const mute = (() => {
+        synth.volume.value = -100
+    })
+
+    const unmute = (() => {
+        synth.volume.value = 0
+    })
+
     return (
         <div className="rootLayout">
-            <Outlet context={{notesDown: notesDown, test: test, toggleMute: toggleMute}}></Outlet>
+            <Outlet context={{notesDown: notesDown, test: test, toggleMute: toggleMute, mute: mute, unmute: unmute}}></Outlet>
         </div>
     )
 }
