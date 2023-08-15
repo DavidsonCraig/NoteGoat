@@ -165,19 +165,12 @@ body {
 .testImageContainer {
     width: 1100px;
     height: 400px;
+    margin: 3%;
     position: relative;
     flex: 0 0 auto; 
 }
 
 @media screen and (max-width: 1000px) {
-    .testImageContainer {
-        width: 600px;
-    }
-    .note {
-        width: 85px;
-        left: 264px;
-        top: 6px;
-    }
     body {
         background-color: red;
     }

@@ -16,7 +16,7 @@ export default function SightRead() {
   const unmute = outletContext.unmute
 
   const [note, setNote] = useState(60)
-  const [keySignature, setKeySignature] = useState("Cmaj")
+  const [keySignature, setKeySignature] = useState("A#min")
   const [combo, setCombo] = useState(0)
   const [highestCombo, setHighestCombo] = useState(0)
   const [showNotes, setshowNotes] = useState(true)

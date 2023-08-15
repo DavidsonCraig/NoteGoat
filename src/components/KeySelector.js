@@ -7,40 +7,23 @@ const KeySelector = (props) => {
         <div className="keySelector">
             <select name="Key" id="KeySelector" onChange={handleSelectChange}>
                 <option disabled>Chromatic</option>
-                <option value="Cmaj">Cmaj</option>
-                <option value="Amin">Amin</option>
-                <option disabled>Sharp Major Keys</option>
-                <option value="Gmaj">Gmaj</option>
-                <option value="Dmaj">Dmaj</option>
-                <option value="Amaj">Amaj</option>
-                <option value="Emaj">Emaj</option>
-                <option value="Bmaj">Bmaj</option>
-                <option value="F#maj">F#maj</option>
-                <option value="C#maj">C#maj</option>
-                <option disabled>Flat Major Keys</option>
-                <option value="Fmaj">Fmaj</option>
-                <option value="Bbmaj">Bbmaj</option>
-                <option value="Ebmaj">Ebmaj</option>
-                <option value="Abmaj">Abmaj</option>
-                <option value="Dbmaj">Dbmaj</option>
-                <option value="Gbmaj">Gbmaj</option>
-                <option value="Cbmaj">Cbmaj</option>
-                <option disabled>Sharp Minor Keys</option>
-                <option value="Emin">Emin</option>
-                <option value="Bmin">Bmin</option>
-                <option value="F#min">F#min</option>
-                <option value="C#min">C#min</option>
-                <option value="G#min">G#min</option>
-                <option value="D#min">D#min</option>
-                <option value="A#min">A#min</option>
-                <option disabled>Flat Minor Keys</option>
-                <option value="Dmin">Dmin</option>
-                <option value="Gmin">Gmin</option>
-                <option value="Cmin">Cmin</option>
-                <option value="Fmin">Fmin</option>
-                <option value="Bbmin">Bbmin</option>
-                <option value="Ebmin">Ebmin</option>
-                <option value="Abmin">Abmin</option>
+                <option value="CMaj">Cmaj/Amin</option>
+                <option disabled>Sharp Keys</option>
+                <option value="GMaj">Gmaj/Emin</option>
+                <option value="DMaj">Dmaj/Bmin</option>
+                <option value="AMaj">Amaj/F#min</option>
+                <option value="EMaj">Emaj/C#min</option>
+                <option value="BMaj">Bmaj/G#min</option>
+                <option value="FSharpMaj">F#maj/D#min</option>
+                <option value="CSharpMaj">C#maj/A#min</option>
+                <option disabled>Flat Keys</option>
+                <option value="FMaj">Fmaj/Dmin</option>
+                <option value="BFlatMaj">Bbmaj/Gmin</option>
+                <option value="EFlatMaj">Ebmaj/Cmin</option>
+                <option value="AFlatMaj">Abmaj/Fmin</option>
+                <option value="DFlatMaj">Dbmaj/Bbmin</option>
+                <option value="GFlatMaj">Gbmaj/Ebmin</option>
+                <option value="CFlatMaj">Cbmaj/Abmin</option>
             </select>
         </div>
      );
