@@ -140,7 +140,6 @@ body {
 
 /* Test */
 .testContainer {
-    position: relative;
     display: inline-flex;
     justify-content: center;
     width: 100%;
@@ -151,18 +150,35 @@ body {
 .grandStaff {
     background-color: rgba(255, 255, 255, 0);
     width: 100%;
-    height: 100%;
+    position: absolute;
+
+}
+
+.note {
+    background-color: rgba(255, 255, 255, 0);
+    position: absolute;
+    width: 155px;
+    left: 490px;
+    top :12px;
 }
 
 .testImageContainer {
-    width: 600px;
+    width: 1100px;
     height: 400px;
     position: relative;
+    flex: 0 0 auto; 
 }
 
-.noteContainer {
-    position: absolute;
-    top: -9%;
-    left: 52%;
-    width: 30px;
+@media screen and (max-width: 1000px) {
+    .testImageContainer {
+        width: 600px;
+    }
+    .note {
+        width: 85px;
+        left: 264px;
+        top: 6px;
+    }
+    body {
+        background-color: red;
+    }
 }

@@ -1,7 +1,7 @@
 import { useEffect } from "react"
-import staff from "../images/comp2.svg"
+import staff from "../images/ASharpMin.svg"
 import note from "../images/note.svg"
-import note2 from "../images/note2.svg"
+import note2 from "../images/noteStemUp.svg"
 import { useState } from "react"
 
 
@@ -13,17 +13,11 @@ export default function Performance() {
   })  
     return (
       <div className="performance">
-        <h1>Performance</h1>
         <div className="testContainer">
-          <div className="testSpacer"></div>
           <div className="testImageContainer">
-           <img src={staff} alt="GrandStaff" className="grandStaff"></img>
-           <div className="noteContainer">
-            <img src={noteImage} alt="GrandStaff" className="grandStaff"></img>
-          </div>
-          </div>
-          <div className="testSpacer"></div>
-          
+            <img src={staff} alt="GrandStaff" className="grandStaff"></img>
+            <img src={noteImage} alt="Note" className="note"></img>
+          </div>          
         </div>
       </div>
     )
