@@ -132,13 +132,18 @@ const NoteDisplay = (props) => {
     
     //Update Note position
     useEffect(() => {
+      if (MIDINoteDisplay == 60) {
+        document.documentElement.style.setProperty('--note-height', '79px')
+      }
 
     }, [notepos])
+
+
     return ( 
         <div className="testContainer">
           <div className="testImageContainer">
             <img src={staff} alt="GrandStaff" className="grandStaff"></img>
-            <img src={noteImage} alt="Note" className="note" id="note"></img>
+            <object data={noteImage} type="image/svg+xml" className="note" id="note"></object>
           </div>          
         </div>
      );

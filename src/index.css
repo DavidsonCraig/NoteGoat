@@ -3,6 +3,10 @@
 }
 
 /* Root */
+:root {
+    --note-height: -2px
+}
+
 html {
     height: 100%;
 }
@@ -157,9 +161,9 @@ body {
 .note {
     background-color: rgba(255, 255, 255, 0);
     position: absolute;
-    width: 155px;
+    width: 161px;
     left: 490px;
-    top :12px;
+    top :var(--note-height);
 }
 
 .testImageContainer {
@@ -172,6 +176,6 @@ body {
 
 @media screen and (max-width: 1000px) {
     body {
-        background-color: red;
+        background-color: rgb(32, 195, 157);
     }
 }
