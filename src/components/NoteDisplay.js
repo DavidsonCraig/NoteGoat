@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react"
-import noteImage from "../images/noteStemUp.svg"
 //Chromatic
 import CMaj from "../images/keySignatures/CMaj.svg"
 //Sharps
@@ -19,54 +18,97 @@ import EFlatMaj from "../images/keySignatures/EFlatMaj.svg"
 import FMaj from "../images/keySignatures/FMaj.svg"
 import GFlatMaj from "../images/keySignatures/GFlatMaj.svg"
 
-//Notes
-import noteStemDown from "../images/notes/noteStemDown.svg"
-import noteStemDownFlat from "../images/notes/noteStemDownFlat.svg"
-import noteStemDownNatural from "../images/notes/noteStemDownNatural.svg"
-import noteStemDownSharp from "../images/notes/noteStemDownSharp.svg"
-import noteStemUp from "../images/notes/noteStemUp.svg"
-import noteStemUpFlat from "../images/notes/noteStemUpFlat.svg"
-import noteStemUpSharp from "../images/notes/noteStemUpSharp.svg"
-import noteStemUpNatural from "../images/notes/noteStemUpNatural.svg"
-
-
+import AllNote from "./AllNote"
 
 const NoteDisplay = (props) => {
-    const noteVector = document.getElementById("note")
-
-    const MIDINoteDisplay = props.MIDINoteDisplay
+    const note = props.note
     const keySignature = props.keySignature
 
     const [staff, setStaff] = useState(CMaj)
-    const [accidental, setAccidental] = useState("none")
-    const [noteImage, setNoteImage] = useState(noteStemUp)
-    const [notepos, setNotePos] = useState("C")
-
-    const transformMIDI = (MIDInote, keySignature) => {
-      let o = {
-          "CMaj": [' C','^C',' D','^D',' E',' F','^F',' G','^G',' A','^A',' B'],
-          "AMin": [' C','^C',' D','^D',' E','F','^F','G','^G','A','^A','B'],
-          //Sharp major keys
-          "GMaj": [' C','^C',' D','^D',' E','=F',' F',' G','^G',' A','^A',' B'],
-          "DMaj": ['=C',' C',' D','^D',' E','=F',' F',' G','^G',' A','^A',' B'],
-          "AMaj": ['=C',' C',' D','^D',' E','=F',' F','=G',' G',' A','^A',' B'],
-          "EMaj": ['=C',' C','=D',' D',' E','=F',' F','=G',' G',' A','^A',' B'], 
-          "BMaj": ['=C',' C','=D',' D',' E','=F',' F','=G',' G','=A',' A',' B'], 
-          "FSharpMaj": ['=C',' C','=D',' D','=E',' E',' F','=G',' G','=A',' A',' B'],
-          "CSharpMaj": [' B,', ' C','=D',' D','=E',' E',' F','=G',' G','=A',' A','=B'],
-          //Flat major keys
-          "FMaj": [' C','_D',' D','_E',' E',' F','_G',' G','_A',' A',' B','=B'],
-          "BFlatMaj": [' C','_D',' D',' E','=E',' F','_G',' G','_A',' A',' B','=B'],
-          "EFlatMaj": [' C','_D',' D',' E','=E',' F','_G',' G',' A','=A',' B','=B'],
-          "AFlatMaj": [' C','_D',' D',' E','=E',' F','_G',' G',' A','=A',' B','=B'],
-          "DFlatMaj": [' C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B','=B'],
-          "GFlatMaj": ['=C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B',' C'],
-          "CFlatMaj": ['=C',' D','=D',' E',' F','=F',' G','=G',' A','=A',' B',' C'],
-      }
-      let n = o[keySignature][MIDInote % 12]
-      setAccidental(n[0])
-      setNotePos(n[1])
+    const [notePosPx, setNotePosPx] = useState(79)
+    const [accidental,setAccidental] = useState(" ")
+    
+    const noteLookUpTable = {
+      "CMaj": [' C','^C',' D','^D',' E',' F','^F',' G','^G',' A','^A',' B'],
+      "AMin": [' C','^C',' D','^D',' E','F','^F','G','^G','A','^A','B'],
+      //Sharp major keys
+      "GMaj": [' C','^C',' D','^D',' E','=F',' F',' G','^G',' A','^A',' B'],
+      "DMaj": ['=C',' C',' D','^D',' E','=F',' F',' G','^G',' A','^A',' B'],
+      "AMaj": ['=C',' C',' D','^D',' E','=F',' F','=G',' G',' A','^A',' B'],
+      "EMaj": ['=C',' C','=D',' D',' E','=F',' F','=G',' G',' A','^A',' B'], 
+      "BMaj": ['=C',' C','=D',' D',' E','=F',' F','=G',' G','=A',' A',' B'], 
+      "FSharpMaj": ['=C',' C','=D',' D','=E',' E',' F','=G',' G','=A',' A',' B'],
+      "CSharpMaj": [' b,', ' C','=D',' D','=E',' E',' F','=G',' G','=A',' A','=B'],
+      //Flat major keys
+      "FMaj": [' C','_D',' D','_E',' E',' F','_G',' G','_A',' A',' B','=B'],
+      "BFlatMaj": [' C','_D',' D',' E','=E',' F','_G',' G','_A',' A',' B','=B'],
+      "EFlatMaj": [' C','_D',' D',' E','=E',' F','_G',' G',' A','=A',' B','=B'],
+      "AFlatMaj": [' C','_D',' D',' E','=E',' F','_G',' G',' A','=A',' B','=B'],
+      "DFlatMaj": [' C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B','=B'],
+      "GFlatMaj": ['=C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B',' C'],
+      "CFlatMaj": ['=C',' D','=D',' E',' F','=F',' G','=G',' A','=A',' B',' C'],
   }
+
+    const calcAdditionalNoteHeight = ((x) => {
+      let tmp = 0
+      let noteSpace = 13.5
+      switch(x) {
+        case 'b':
+          tmp = 1
+          break
+        case 'C':
+          tmp = 0
+          break
+        case 'D':
+          tmp = -1
+          break
+        case 'E':
+          tmp = -2
+          break
+        case 'F':
+          tmp = -3
+          break
+        case 'G':
+          tmp = -4
+          break
+        case 'A':
+          tmp = -5
+          break
+        case 'B':
+          tmp = -6
+          break
+      }
+      return tmp * noteSpace
+    })
+
+    const updateNotePos = ((x) => {
+      //First values are exact x positions of the C notes at each octave
+      let additionalHeight = calcAdditionalNoteHeight(x)
+      switch(Math.floor(note / 12)) {
+        case 3:
+          setNotePosPx(383 + additionalHeight)
+          break
+        case 4:
+          setNotePosPx(288.5 + additionalHeight)
+          break
+        case 5:
+          setNotePosPx(79 + additionalHeight)
+          break
+        case 6:
+          setNotePosPx(-15.5 + additionalHeight)
+          break
+        case 7:
+          setNotePosPx(-110 + additionalHeight)
+          break
+      }
+    })
+
+    useEffect(() => {
+      let n = noteLookUpTable[keySignature][note % 12]
+      setAccidental(n[0])
+      updateNotePos(n[1])
+    }, [keySignature, note])
+
 
     //Update key signature
     useEffect(() => {
@@ -91,59 +133,21 @@ const NoteDisplay = (props) => {
             "CFlatMaj": CFlatMaj,
         }
         setStaff(o[keySignature])
-        transformMIDI(MIDINoteDisplay,keySignature)
     }, [keySignature])
 
-    //Update Note Accidentals
-    useEffect(() => {
-      if (MIDINoteDisplay >= 60) {
-        switch (accidental) {
-          case (" "):
-            setNoteImage(noteStemUp)
-            break
-          case ("^"):
-            setNoteImage(noteStemUpSharp)
-            break
-          case ("_"):
-            setNoteImage(noteStemUpFlat)
-            break
-          case ("="):
-            setNoteImage(noteStemUpNatural)
-            break
-        }
-      } else {
-        switch (accidental) {
-          case (" "):
-            setNoteImage(noteStemDown)
-            break
-          case ("^"):
-            setNoteImage(noteStemDownSharp)
-            break
-          case ("_"):
-            setNoteImage(noteStemDownFlat)
-            break
-          case ("="):
-            setNoteImage(noteStemDownNatural)
-            break
-        }
-      }
-      
-    }, [accidental,MIDINoteDisplay])
     
     //Update Note position
     useEffect(() => {
-      if (MIDINoteDisplay == 60) {
-        document.documentElement.style.setProperty('--note-height', '79px')
-      }
-
-    }, [notepos])
+      document.documentElement.style.setProperty('--note-height', `${notePosPx}px`)
+    }, [notePosPx])
 
 
     return ( 
         <div className="testContainer">
           <div className="testImageContainer">
             <img src={staff} alt="GrandStaff" className="grandStaff"></img>
-            <object data={noteImage} type="image/svg+xml" className="note" id="note"></object>
+            {/* <object data={allNote} type="image/svg+xml" className="note" id="note"></object> */}
+            <AllNote accidental={accidental} note={note}></AllNote>
           </div>          
         </div>
      );

@@ -7,6 +7,7 @@ import * as Tone from "tone"
 import Timer from "../components/Timer"
 import PianoHelper from "../components/PianoHelper"
 import DifficultySelector from "../components/DifficultySelector"
+import NoteDisplay from "../components/NoteDisplay"
 
 
 export default function SightRead() {
@@ -16,7 +17,7 @@ export default function SightRead() {
   const unmute = outletContext.unmute
 
   const [note, setNote] = useState(60)
-  const [keySignature, setKeySignature] = useState("A#min")
+  const [keySignature, setKeySignature] = useState("CMaj")
   const [combo, setCombo] = useState(0)
   const [highestCombo, setHighestCombo] = useState(0)
   const [showNotes, setshowNotes] = useState(true)
@@ -88,13 +89,13 @@ export default function SightRead() {
 
   return (
     <div className="sightRead">
-      <SingleNote note={note} keySignature={keySignature}></SingleNote>
-      <KeySelector handleKeyChange={handleKeyChange}></KeySelector>
+      <NoteDisplay note={note} keySignature={keySignature}></NoteDisplay>
       <DifficultySelector setDifficulty={setDifficulty}></DifficultySelector>
       <h1>Combo: {combo}</h1>
       <h1>Highest Combo: {highestCombo}</h1>
       <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
       <PianoHelper noteOn={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
+      <KeySelector handleKeyChange={handleKeyChange}></KeySelector>
     </div>
   )
 }
