@@ -14,6 +14,7 @@ html {
 body {
     margin: 0px;
     height: 100%;
+    background-color: #f2d8d8ff;
 }
 
 #root {
@@ -32,6 +33,11 @@ body {
     height: 100%;
 }
 
+.optionContainer {
+    display: inline-flex;
+    justify-content: center;
+}
+
 /* SingleNote.js */
 .singleNote {
     width: 100%;
@@ -42,13 +48,24 @@ body {
 }
 /* Timer.js */
 .timerContainer {
+    width: 100%;
+    height: 2.5vh;
+    padding: 0px;
     display: flex;
     justify-content: center;
 }
 
+.timerInnerContainer {
+    width: 100%;
+    height: 2.5vh;
+    margin-left: 20vw;
+    margin-right: 20vw;
+    display: block;
+    position: relative;
+}
+
 .timerBody {
-    width: 80%;
-    height: 20px;
+    height: 2.5vh;
     background-color: #00274aff;
     display: flex;
     align-items: center;
@@ -58,14 +75,14 @@ body {
 
 .timeRemaining {
     width: 100%;
-    height: 10px;
-    background-color: #FFFF;
+    height: 1.5vh;
+    background-color: #f2d8d8ff;
 }
 
 /* Piano Helper */
 .pianoHelperContainer {
     width: 100%;
-    height: 20vh;
+    height: 10vh;
     padding: 0px;
     display: flex;
     justify-content: center;
@@ -73,17 +90,16 @@ body {
 
 .pianoHelperInnerContainer {
     width: 100%;
-    height: 20vh;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    height: 10vh;
+    margin-left: 20vw;
+    margin-right: 20vw;
     display: block;
     position: relative;
 }
 
 .whiteNotes {
     width: 100%;
-    height: 20vh;
-    background-color: rgb(144, 50, 50);
+    height: 10vh;
     display: flex;
     position: absolute;
     left: 0px;
@@ -92,15 +108,15 @@ body {
 
 .whiteNote {
     flex-grow: 1;
-    background-color: rgb(255, 255, 255);
-    border-color: black;
+    background-color: #f2d8d8ff;
+    border-color: #00274aff;
     border: 1px;
     border-style: solid;
 }
 
 .blackNotes {
     width: 100%;
-    height: 10vh;
+    height: 5vh;
     display: flex;
     position: absolute;
     left: 0px;
@@ -129,10 +145,18 @@ body {
 
 /* Key Selector */
 .keySelector {
-    display: flex;
-    justify-content: center;
+    margin-right: 5vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
 }
 
+/* Difficulty Selector */
+.difficultySelector {
+    margin-right: 5vw;
+    margin-left: 5vw;
+    margin-top: 5vh;
+
+}
 
 /* Performance */
 .performance {
@@ -140,12 +164,13 @@ body {
     width: 100%;
 }
 
-/* Test */
-.testContainer {
+/* allNote */
+.noteDisplay {
     display: inline-flex;
     justify-content: center;
     width: 100%;
-    height: 400px;
+    scale: 0.8;
+    margin-top: 6vh;
 }
 
 .grandStaff {
@@ -159,11 +184,12 @@ body {
     background-color: rgba(255, 255, 255, 0);
     position: absolute;
     width: 161px;
-    left: 490px;
+    left: 445px;
     top :var(--note-height);
+    scale: 0.6;
 }
 
-.testImageContainer {
+.SVGContainer {
     width: 1100px;
     height: 400px;
     margin: 3%;
@@ -175,4 +201,22 @@ body {
     body {
         background-color: rgb(32, 195, 157);
     }
+}
+
+/* Extra Lines */
+.extraLinesContainer {
+    position: absolute;
+    scale: 0.87;
+    left: 497px;
+    top: -154px;
+}
+
+/* Combo text */
+.comboContainer {
+    display: inline-flex;
+    justify-content: center;
+}
+
+.comboText {
+    margin: 3vw;
 }

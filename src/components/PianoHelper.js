@@ -5,13 +5,16 @@ const PianoHelper = (props) => {
     const combo = props.combo
     const showNotes = props.showNotes
     const difficulty = props.difficulty
+    const filledColor = "#4ec091ff"
+    const whiteNoteColor = "#f2d8d8ff"
+    const blackNoteColor = "#00274aff"
 
     useEffect(() => {
-        document.querySelectorAll(".whiteNote").forEach(element => element.style.backgroundColor = "white")
-        document.querySelectorAll(".blackNote").forEach(element => element.style.backgroundColor = "black")
+        document.querySelectorAll(".whiteNote").forEach(element => element.style.backgroundColor = whiteNoteColor)
+        document.querySelectorAll(".blackNote").forEach(element => element.style.backgroundColor = blackNoteColor)
         if (combo === 0 || showNotes) {
             for (let i=0; i < noteOn.length; i++) {
-                document.getElementById(`mn` + `${noteOn[i]}`).style.backgroundColor = "red"
+                document.getElementById(`mn` + `${noteOn[i]}`).style.backgroundColor = filledColor
             }
         }
     }, [combo,noteOn])

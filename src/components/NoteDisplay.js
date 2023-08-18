@@ -1,4 +1,7 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
+import { useOutletContext } from "react-router"
+import anime from "animejs";
+
 //Chromatic
 import CMaj from "../images/keySignatures/CMaj.svg"
 //Sharps
@@ -19,6 +22,7 @@ import FMaj from "../images/keySignatures/FMaj.svg"
 import GFlatMaj from "../images/keySignatures/GFlatMaj.svg"
 
 import AllNote from "./AllNote"
+import ExtraLines from "./ExtraLines";
 
 const NoteDisplay = (props) => {
     const note = props.note
@@ -27,6 +31,12 @@ const NoteDisplay = (props) => {
     const [staff, setStaff] = useState(CMaj)
     const [notePosPx, setNotePosPx] = useState(79)
     const [accidental,setAccidental] = useState(" ")
+    const [noteColor, setNoteColor] = useState("#000")
+
+    const outletContext = useOutletContext()
+    const notesDown = outletContext.notesDown
+
+    let prevNote = useRef(0)
     
     const noteLookUpTable = {
       "CMaj": [' C','^C',' D','^D',' E',' F','^F',' G','^G',' A','^A',' B'],
@@ -45,8 +55,8 @@ const NoteDisplay = (props) => {
       "EFlatMaj": [' C','_D',' D',' E','=E',' F','_G',' G',' A','=A',' B','=B'],
       "AFlatMaj": [' C','_D',' D',' E','=E',' F','_G',' G',' A','=A',' B','=B'],
       "DFlatMaj": [' C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B','=B'],
-      "GFlatMaj": ['=C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B',' C'],
-      "CFlatMaj": ['=C',' D','=D',' E',' F','=F',' G','=G',' A','=A',' B',' C'],
+      "GFlatMaj": ['=C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B',' c'],
+      "CFlatMaj": ['=C',' D','=D',' E',' F','=F',' G','=G',' A','=A',' B',' c'],
   }
 
     const calcAdditionalNoteHeight = ((x) => {
@@ -77,6 +87,9 @@ const NoteDisplay = (props) => {
         case 'B':
           tmp = -6
           break
+        case 'c':
+          tmp = -7
+          break
       }
       return tmp * noteSpace
     })
@@ -86,19 +99,19 @@ const NoteDisplay = (props) => {
       let additionalHeight = calcAdditionalNoteHeight(x)
       switch(Math.floor(note / 12)) {
         case 3:
-          setNotePosPx(383 + additionalHeight)
+          setNotePosPx(320 + additionalHeight)
           break
         case 4:
-          setNotePosPx(288.5 + additionalHeight)
+          setNotePosPx(225.5 + additionalHeight)
           break
         case 5:
-          setNotePosPx(79 + additionalHeight)
+          setNotePosPx(16.5 + additionalHeight)
           break
         case 6:
-          setNotePosPx(-15.5 + additionalHeight)
+          setNotePosPx(-78 + additionalHeight)
           break
         case 7:
-          setNotePosPx(-110 + additionalHeight)
+          setNotePosPx(-172.5 + additionalHeight)
           break
       }
     })
@@ -141,13 +154,46 @@ const NoteDisplay = (props) => {
       document.documentElement.style.setProperty('--note-height', `${notePosPx}px`)
     }, [notePosPx])
 
+    //Animaation handling
+    useEffect(() => {
+      let l = Object.keys(notesDown).length
+  
+      //Fill note logic
+      if ((note in notesDown && l == 1 && prevNote.current == 0) || ((l == 0) && noteColor == "red")) {
+        setNoteColor("black")
+      } else if (l > 0) {
+        setNoteColor("red")
+      } 
+  
+      //Shake note logic
+      if (prevNote.current == 0 && !(note in notesDown)) {
+        shakeNote()
+      }
+  
+      prevNote.current = l
+    }, [notesDown])
+   
+    const shakeNote = () => {
+      anime({
+        targets: ".note",
+        translateX: [
+          { value: -9, duration: 50 },
+          { value: 9, duration: 50 },
+          { value: -9, duration: 50 },
+          { value: 9, duration: 50 },
+          { value: 0, duration: 50 },
+        ],
+        easing: 'easeInSine',
+      })
+    }
+
 
     return ( 
-        <div className="testContainer">
-          <div className="testImageContainer">
+        <div className="noteDisplay">
+          <div className="SVGContainer">
             <img src={staff} alt="GrandStaff" className="grandStaff"></img>
-            {/* <object data={allNote} type="image/svg+xml" className="note" id="note"></object> */}
-            <AllNote accidental={accidental} note={note}></AllNote>
+            <AllNote accidental={accidental} note={note} noteColor={noteColor} notePosPx={notePosPx}></AllNote>
+            <ExtraLines notePosPx={notePosPx}></ExtraLines>
           </div>          
         </div>
      );

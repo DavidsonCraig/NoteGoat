@@ -31,11 +31,13 @@ const Timer = (props) => {
 
     return ( 
         <div className="timerContainer">
-            <div className="timerBody">
-                <div className="timeRemaining">
-
+            <div className="timerInnerContainer">
+                <div className="timerBody">
+                    <div className="timeRemaining">
+                    </div>
                 </div>
             </div>
+            
         </div>
     );
 }

@@ -90,12 +90,16 @@ export default function SightRead() {
   return (
     <div className="sightRead">
       <NoteDisplay note={note} keySignature={keySignature}></NoteDisplay>
-      <DifficultySelector setDifficulty={setDifficulty}></DifficultySelector>
-      <h1>Combo: {combo}</h1>
-      <h1>Highest Combo: {highestCombo}</h1>
+      <div className="comboContainer">
+        <h1 className="comboText">Combo: {combo}</h1>
+        <h1 className="comboText">Highest Combo: {highestCombo}</h1>
+      </div>
       <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
       <PianoHelper noteOn={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
-      <KeySelector handleKeyChange={handleKeyChange}></KeySelector>
+      <div className="optionContainer">
+        <KeySelector handleKeyChange={handleKeyChange}></KeySelector>
+        <DifficultySelector setDifficulty={setDifficulty}></DifficultySelector>
+      </div>
     </div>
   )
 }
