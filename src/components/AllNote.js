@@ -12,8 +12,6 @@ const AllNote = (props) => {
     const [flatOpacity, setFlatOpacity] = useState(0)
     const [naturalOpacity, setNaturalOpacity] = useState(0)
 
-    console.log(note)
-
     useEffect(() => {
         if ((notePosPx < 17 && notePosPx > -52) || notePosPx > 212) {
             setStemDownOpacity(0)
@@ -54,8 +52,8 @@ const AllNote = (props) => {
                 xmlSpace="preserve"
                 width="70mm"
                 height="83mm"
-                stroke="#000"
-                fill="#000"
+                stroke="#00274aff"
+                fill="#00274aff"
                 viewBox="0 0 70 83"
             >
             <path id="noteBody" fill={noteColor} stroke={noteColor} d="m42.18 39.087a5.5413 7.5869 74.945 0 1-5.1297 7.5799 5.5413 7.5869 74.945 0 1-9.2295-2.7532 5.5413 7.5869 74.945 0 1 5.1297-7.5799 5.5413 7.5869 74.945 0 1 9.2295 2.7532z" fillRule="evenodd" strokeWidth=".25384"/>

@@ -220,3 +220,10 @@ body {
 .comboText {
     margin: 3vw;
 }
+
+/* Grand Staff */
+
+.GrandStaff {
+    top: -4px;
+    position: absolute;
+}

@@ -23,6 +23,7 @@ import GFlatMaj from "../images/keySignatures/GFlatMaj.svg"
 
 import AllNote from "./AllNote"
 import ExtraLines from "./ExtraLines";
+import GrandStaff from "./GrandStaff";
 
 const NoteDisplay = (props) => {
     const note = props.note
@@ -31,7 +32,7 @@ const NoteDisplay = (props) => {
     const [staff, setStaff] = useState(CMaj)
     const [notePosPx, setNotePosPx] = useState(79)
     const [accidental,setAccidental] = useState(" ")
-    const [noteColor, setNoteColor] = useState("#000")
+    const [noteColor, setNoteColor] = useState("#00274aff")
 
     const outletContext = useOutletContext()
     const notesDown = outletContext.notesDown
@@ -160,7 +161,7 @@ const NoteDisplay = (props) => {
   
       //Fill note logic
       if ((note in notesDown && l == 1 && prevNote.current == 0) || ((l == 0) && noteColor == "red")) {
-        setNoteColor("black")
+        setNoteColor("#00274aff")
       } else if (l > 0) {
         setNoteColor("red")
       } 
@@ -191,9 +192,9 @@ const NoteDisplay = (props) => {
     return ( 
         <div className="noteDisplay">
           <div className="SVGContainer">
-            <img src={staff} alt="GrandStaff" className="grandStaff"></img>
             <AllNote accidental={accidental} note={note} noteColor={noteColor} notePosPx={notePosPx}></AllNote>
             <ExtraLines notePosPx={notePosPx}></ExtraLines>
+            <GrandStaff keySignature={keySignature}></GrandStaff>
           </div>          
         </div>
      );

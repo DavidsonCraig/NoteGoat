@@ -15,8 +15,6 @@ const ExtraLines = (props) => {
     const notePosPx = props.notePosPx
 
     useEffect(() => {
-        console.log(notePosPx)
-
         if (notePosPx === 16.5) {
             setExtraLineMiddleC(1)
         } else {
