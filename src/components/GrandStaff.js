@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 
 const GrandStaff = (props) => {
-    const [staffSharp1, setStaffSharp1] = useState(1)
-    const [staffSharp2, setStaffSharp2] = useState(1)
-    const [staffSharp3, setStaffSharp3] = useState(1)
-    const [staffSharp4, setStaffSharp4] = useState(1)
-    const [staffSharp5, setStaffSharp5] = useState(1)
-    const [staffSharp6, setStaffSharp6] = useState(1)
-    const [staffSharp7, setStaffSharp7] = useState(1)
+    const [staffSharp1, setStaffSharp1] = useState(0)
+    const [staffSharp2, setStaffSharp2] = useState(0)
+    const [staffSharp3, setStaffSharp3] = useState(0)
+    const [staffSharp4, setStaffSharp4] = useState(0)
+    const [staffSharp5, setStaffSharp5] = useState(0)
+    const [staffSharp6, setStaffSharp6] = useState(0)
+    const [staffSharp7, setStaffSharp7] = useState(0)
 
     const [staffFlat1, setStaffFlat1] = useState(0)
     const [staffFlat2, setStaffFlat2] = useState(0)

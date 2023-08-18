@@ -1,5 +1,4 @@
 import { set } from "animejs"
-import SingleNote from "../components/SingleNote"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useOutletContext } from "react-router"
 import KeySelector from "../components/KeySelector"

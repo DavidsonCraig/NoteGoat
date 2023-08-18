@@ -2,25 +2,6 @@ import { useEffect, useState, useRef } from "react"
 import { useOutletContext } from "react-router"
 import anime from "animejs";
 
-//Chromatic
-import CMaj from "../images/keySignatures/CMaj.svg"
-//Sharps
-import AMaj from "../images/keySignatures/AMaj.svg"
-import BMaj from "../images/keySignatures/BMaj.svg"
-import CSharpMaj from "../images/keySignatures/CSharpMaj.svg"
-import DMaj from "../images/keySignatures/DMaj.svg"
-import EMaj from "../images/keySignatures/EMaj.svg"
-import FSharpMaj from "../images/keySignatures/FSharpMaj.svg"
-import GMaj from "../images/keySignatures/GMaj.svg"
-//Flats
-import AFlatMaj from "../images/keySignatures/AFlatMaj.svg"
-import BFlatMaj from "../images/keySignatures/BFlatMaj.svg"
-import CFlatMaj from "../images/keySignatures/CFlatMaj.svg"
-import DFlatMaj from "../images/keySignatures/DFlatMaj.svg"
-import EFlatMaj from "../images/keySignatures/EFlatMaj.svg"
-import FMaj from "../images/keySignatures/FMaj.svg"
-import GFlatMaj from "../images/keySignatures/GFlatMaj.svg"
-
 import AllNote from "./AllNote"
 import ExtraLines from "./ExtraLines";
 import GrandStaff from "./GrandStaff";
@@ -29,7 +10,6 @@ const NoteDisplay = (props) => {
     const note = props.note
     const keySignature = props.keySignature
 
-    const [staff, setStaff] = useState(CMaj)
     const [notePosPx, setNotePosPx] = useState(79)
     const [accidental,setAccidental] = useState(" ")
     const [noteColor, setNoteColor] = useState("#00274aff")
@@ -122,40 +102,13 @@ const NoteDisplay = (props) => {
       setAccidental(n[0])
       updateNotePos(n[1])
     }, [keySignature, note])
-
-
-    //Update key signature
-    useEffect(() => {
-        const o = {
-            //Chromatic
-            "CMaj": CMaj,
-            //Sharps
-            "AMaj": AMaj,
-            "BMaj": BMaj,
-            "CSharpMaj": CSharpMaj,
-            "DMaj": DMaj,
-            "EMaj": EMaj,
-            "FSharpMaj": FSharpMaj,
-            "GMaj": GMaj,
-            //Flats
-            "FMaj": FMaj,
-            "BFlatMaj": BFlatMaj,
-            "EFlatMaj": EFlatMaj,
-            "AFlatMaj": AFlatMaj,
-            "DFlatMaj": DFlatMaj,
-            "GFlatMaj": GFlatMaj,
-            "CFlatMaj": CFlatMaj,
-        }
-        setStaff(o[keySignature])
-    }, [keySignature])
-
     
     //Update Note position
     useEffect(() => {
       document.documentElement.style.setProperty('--note-height', `${notePosPx}px`)
     }, [notePosPx])
 
-    //Animaation handling
+    //Animation handling
     useEffect(() => {
       let l = Object.keys(notesDown).length
   
