@@ -272,4 +272,50 @@ body {
     color: #00274aff;
 }
 
+/* Main */
 
+.main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+.menuOptionContainer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.menuOption {
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 6vw;
+    color: white;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    background-color: #00274aff;
+    padding: 5px;
+    padding-right: 90px;
+    padding-left: 90px;
+    transition: font-size 0.15s ease-in-out;
+}
+
+.menuOption:hover {
+    font-size: 7vw;
+}
+
+.pianoMenuDecorationContainer {
+    width: 25vw;
+    height: 100%;
+    display: flex;
+    justify-content: right;
+}
+
+.pianoMenuDecoration {
+    position: fixed;
+    height: 125%;
+    top: -25vh;
+}
