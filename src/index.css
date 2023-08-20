@@ -255,18 +255,21 @@ body {
     display: inline-flex;
 }
 
-.titleContainer {
-    position: relative;
-    width: 100%;
-    display: inline-flex;
-    justify-content: center;
-}
-
 .transparent {
     opacity: 0;
 }
 #splashStart {
     position: absolute;
+    top: 150vh;
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 60px;
+    color: white;
+}
+
+#splashStart:hover {
+    color: #00274aff;
 }
 
 
