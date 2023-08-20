@@ -259,7 +259,7 @@ body {
     opacity: 0;
 }
 #splashStart {
-    position: absolute;
+    position: fixed;
     top: 150vh;
     text-decoration: none;
     font-family: Roboto;
