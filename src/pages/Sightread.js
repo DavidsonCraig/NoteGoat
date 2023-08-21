@@ -1,4 +1,3 @@
-import { set } from "animejs"
 import { useEffect, useMemo, useRef, useState } from "react"
 import { useOutletContext } from "react-router"
 import KeySelector from "../components/KeySelector"
@@ -7,6 +6,7 @@ import Timer from "../components/Timer"
 import PianoHelper from "../components/PianoHelper"
 import DifficultySelector from "../components/DifficultySelector"
 import NoteDisplay from "../components/NoteDisplay"
+import Combo from "../components/Combo"
 
 
 export default function SightRead() {
@@ -42,6 +42,7 @@ export default function SightRead() {
     switch(difficulty) {
       case "novice":
         setNote(Math.floor(Math.random() * 12) + 60)
+        setNote(36)
         break
       case "advanced":
         setNote(Math.floor(Math.random() * 24) + 48)
@@ -50,7 +51,7 @@ export default function SightRead() {
         setNote(Math.floor(Math.random() * 36) + 48)
         break
       case "goat":
-        setNote(Math.floor(Math.random() * 60) + 36)
+        setNote(Math.floor(Math.random() * 59) + 36)
         break
     }
   })
@@ -72,8 +73,6 @@ export default function SightRead() {
     prevNote.current = l
   }, [notesDown])
 
-  
-
   const handleKeyChange = (x) => {
     setKeySignature(x)
   }
@@ -89,10 +88,7 @@ export default function SightRead() {
   return (
     <div className="sightRead">
       <NoteDisplay note={note} keySignature={keySignature}></NoteDisplay>
-      <div className="comboContainer">
-        <h1 className="comboText">Combo: {combo}</h1>
-        <h1 className="comboText">Highest Combo: {highestCombo}</h1>
-      </div>
+      <Combo combo={combo} highestCombo={highestCombo}></Combo>
       <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
       <PianoHelper noteOn={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
       <div className="optionContainer">

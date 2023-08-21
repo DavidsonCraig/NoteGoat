@@ -4,8 +4,8 @@ const DifficultySelector = (props) => {
         props.setDifficulty(x)
     })
     return ( 
-        <div className="difficultySelector">
-            <select id="difficultySelector" onChange={handleSelectChange}>
+        <div className="difficultySelector sightReadOptionContainer">
+            <select id="difficultySelector" className="sightReadOption" onChange={handleSelectChange}>
                 <option value="novice">Novice</option>
                 <option value="advanced">Advanced</option>
                 <option value="expert">Expert</option>

@@ -1,11 +1,11 @@
 const KeySelector = (props) => {
     const handleSelectChange = (() => {
-        let x = document.getElementById("KeySelector").value
+        let x = document.getElementById("keySelector").value
         props.handleKeyChange(x)
     })
     return ( 
-        <div className="keySelector">
-            <select name="Key" id="KeySelector" onChange={handleSelectChange}>
+        <div className="keySelectorContainer sightReadOptionContainer">
+            <select name="Key" id="keySelector" className="sightReadOption" onChange={handleSelectChange}>
                 <option disabled>Chromatic</option>
                 <option value="CMaj">Cmaj/Amin</option>
                 <option disabled>Sharp Keys</option>

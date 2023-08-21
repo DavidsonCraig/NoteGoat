@@ -23,7 +23,6 @@ export default function Main(props) {
         </div>
         <div className="menuOptionContainer">
           <NavLink to="/sightread" className="menuOption">Learn to read</NavLink>
-          <NavLink to="/performance" className="menuOption">Learn to play</NavLink>
           <NavLink to="/settings" className="menuOption">Settings</NavLink>
         </div>
       </div>

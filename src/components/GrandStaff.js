@@ -262,7 +262,7 @@ const GrandStaff = (props) => {
     }, [keySignature])
 
     return ( 
-        <div className="GrandStaff">
+        <div className="grandStaff">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 xmlSpace="preserve"
