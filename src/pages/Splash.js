@@ -1,8 +1,10 @@
 import anime from "animejs";
 import { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useOutletContext } from "react-router-dom";
 
 export default function Splash() {
+  const outletContext = useOutletContext()
+  const unlockAchievement = outletContext.unlockAchievement
 
   const handleTitleAnimation = (() => {
     anime({
@@ -40,7 +42,7 @@ export default function Splash() {
               <h1 className="titleLetter">a</h1>
               <h1 className="titleLetter">t</h1>
             </div>
-          <NavLink to="main" id="splashStart">Start</NavLink>
+          <NavLink to="main" id="splashStart" onClick={() => {unlockAchievement(0)}}>Start</NavLink>
         </div>
       </div>
     )

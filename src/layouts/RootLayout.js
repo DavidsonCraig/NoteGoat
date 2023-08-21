@@ -1,19 +1,61 @@
 import { useEffect, useRef, useState, useMemo } from "react";
 import { Outlet } from "react-router"
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 import * as Tone from "tone"
 
 export default function RootLayout() {
     //Initialises base synth
     const [notesDown, setNotesDown] = useState({})
-    const [test, setTest] = useState(69)
     const refNotesDown = useRef({})
+
+    const [achievements, setAchievements] = useState([
+        ["00", "locked", "Hi!", "Start the game"],
+        ["01", "locked", "First step", "Play a correct note"],
+        ["02", "locked", "Graduated", "Complete the tutorial"],
+        ["03", "locked", "A is for Aardvark", "Play a correct A note"],
+        ["04", "locked", "B is for Beaver", "Play a correct B note"],
+        ["05", "locked", "C is for Cow", "Play a correct C note"],
+        ["06", "locked", "D is for Duck", "Play a correct D note"],
+        ["07", "locked", "E is for Elephant", "Play a correct E note"],
+        ["08", "locked", "F is for Fox", "Play a correct F note"],
+        ["09", "locked", "G is for GOAT", "Play a correct G note"],
+        ["10", "locked", "Ouch that's sharp!", "Play a correct sharp note"],
+        ["11", "locked", "Flat tyre", "Play a correct Flat note"],
+    ])
+
+    const unlockAchievement = ((x) => {
+        if (achievements[x][1] == "locked") {
+            const tmp = [...achievements]
+            tmp[x][1] = "unlocked"
+            setAchievements(tmp)
+            
+            toast(
+                <div className="toastContainer">
+                   <h1 className="toastTitle">{tmp[x][2]}</h1>
+                   <h2 className="toastSubtitle">{tmp[x][3]}</h2>
+                </div>,
+               {
+                   position: "bottom-left",
+                   autoClose: 3000,
+                   hideProgressBar: true,
+                   closeButton: false,
+                   pauseOnHover: true,
+                   draggable: false,
+                   progress: undefined,
+                   style: { background: '#4ec091ff', color: 'white'},
+                   });
+        }
+        
+    })
+
 
     const synth = useMemo(() => {
         Tone.start();
         console.log("Tone.js start")
 
         //Base context setup for minimising latency
-        Tone.context.lookAhead = 0;
+        Tone.context.lookAhead = 0
 
         let pianoSynth = new Tone.Sampler({
             urls: {
@@ -51,7 +93,6 @@ export default function RootLayout() {
             release: 1,
             baseUrl: "https://tonejs.github.io/audio/salamander/",
         }).toDestination()
-
         return pianoSynth
     },[])
 
@@ -133,7 +174,19 @@ export default function RootLayout() {
 
     return (
         <div className="rootLayout">
-            <Outlet context={{notesDown: notesDown, test: test, toggleMute: toggleMute, mute: mute, unmute: unmute}}></Outlet>
+            <Outlet context={{notesDown: notesDown, toggleMute: toggleMute, mute: mute, unmute: unmute, achievements: achievements, unlockAchievement: unlockAchievement}}></Outlet>
+            <ToastContainer
+                position="bottom-left"
+                autoClose={3000}
+                hideProgressBar
+                newestOnTop
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable={false}
+                pauseOnHover
+                theme="colored"
+                />
         </div>
     )
 }

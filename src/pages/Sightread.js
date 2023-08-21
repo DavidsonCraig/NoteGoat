@@ -7,7 +7,7 @@ import PianoHelper from "../components/PianoHelper"
 import DifficultySelector from "../components/DifficultySelector"
 import NoteDisplay from "../components/NoteDisplay"
 import Combo from "../components/Combo"
-
+import BackButton from "../components/BackButton"
 
 export default function SightRead() {
   let outletContext = useOutletContext()
@@ -42,7 +42,7 @@ export default function SightRead() {
     switch(difficulty) {
       case "novice":
         setNote(Math.floor(Math.random() * 12) + 60)
-        setNote(36)
+        // setNote(95)
         break
       case "advanced":
         setNote(Math.floor(Math.random() * 24) + 48)
@@ -87,6 +87,7 @@ export default function SightRead() {
 
   return (
     <div className="sightRead">
+      <BackButton></BackButton>
       <NoteDisplay note={note} keySignature={keySignature}></NoteDisplay>
       <Combo combo={combo} highestCombo={highestCombo}></Combo>
       <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>

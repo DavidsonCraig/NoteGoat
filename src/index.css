@@ -276,7 +276,7 @@ body {
     font-weight: 100;
     font-style: italic;
     font-size: 150px;
-    color: white;
+    color: #00274aff;
 }
 
 .innerTitleContainer {
@@ -295,11 +295,13 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-size: 60px;
-    color: white;
+    color: #00274aff;
+    transition: font-size 0.15s ease-in-out;
+
 }
 
 #splashStart:hover {
-    color: #00274aff;
+    font-size: 70px;
 }
 
 /* Main */
@@ -347,4 +349,136 @@ body {
     position: fixed;
     height: 125%;
     top: -25vh;
+}
+
+/* Back button */
+/* Inherits from .menuOption */
+.backButtonContainer {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.backButton {
+    font-size: 2vw;
+    padding-right: 5vw;
+    padding-left: 5vw;
+}
+
+.backButton:hover {
+    font-size: 2.5vw;
+}
+
+/* Achievements */
+.achievements {
+    width: 100%;
+    height: 100%;
+}
+
+.achievementsContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center
+}
+
+.achievementsScroller {
+    width: 50vw;
+    height: 70vh;
+    background-color: #00274aff;
+    overflow: auto;
+}
+
+.achievementsList {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.achievementSubtext {
+    margin: 0;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 1vw;
+    color: white;
+}
+
+.achievementName {
+    margin: 0;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 2vw;
+    color: white;
+}
+
+.achievementsListSubContainer {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2vw;
+
+}
+
+.locked {
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 2vw;
+    color: white;
+    border-style: solid;
+    border-color: #00182E;
+    display: flex;
+    align-items: center;
+    padding: 0 2vw;
+}
+
+.unlocked {
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 2vw;
+    color: white;
+    border-style: solid;
+    border-color: #00182E;
+    background-color: #4ec091ff;
+    display: flex;
+    align-items: center;
+    padding: 0 2vw;
+}
+
+#achievementsTitle {
+    text-decoration: none;
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 8vh;
+    color: #00182E;
+}
+
+/* ScrollBar */
+::-webkit-scrollbar {
+    background-color: #00274aff;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4f9ce1ff;
+}
+
+/* Toast */
+.toastTitle {
+    font-size: 2vw;
+    padding: 0;
+    margin: 0;
+    font-family: Roboto;
+    font-weight: 100;
+}
+
+.toastSubtitle {
+    font-size: 1vw;
+    padding: 0;
+    margin: 0;
+    font-family: Roboto;
+    font-weight: 100;
 }

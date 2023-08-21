@@ -13,6 +13,7 @@ import Main from "./pages/Main";
 // layouts
 import RootLayout from "./layouts/RootLayout";
 import Settings from "./pages/Settings";
+import Achievements from "./pages/Achievements";
 
 
 const router = createBrowserRouter(
@@ -22,6 +23,7 @@ const router = createBrowserRouter(
       <Route path="main" element={<Main></Main>}></Route>
       <Route path="sightread" element={<SightRead></SightRead>}></Route>
       <Route path="settings" element={<Settings></Settings>}></Route>
+      <Route path="achievements" element={<Achievements></Achievements>}></Route>
     </Route>
   )
 )
