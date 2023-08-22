@@ -8,7 +8,6 @@ import GrandStaff from "./GrandStaff";
 
 const NoteDisplay = (props) => {
     const note = props.note
-    const keySignature = props.keySignature
 
     const [notePosPx, setNotePosPx] = useState(79)
     const [accidental,setAccidental] = useState(" ")
@@ -16,6 +15,7 @@ const NoteDisplay = (props) => {
 
     const outletContext = useOutletContext()
     const notesDown = outletContext.notesDown
+    const keySignature = outletContext.keySignature
 
     let prevNote = useRef(0)
     

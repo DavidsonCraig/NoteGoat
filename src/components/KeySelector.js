@@ -1,8 +1,18 @@
+import { useEffect } from "react"
+import { useOutletContext } from "react-router"
+
 const KeySelector = (props) => {
+    const outletContext = useOutletContext()
+    const setKeySignature = outletContext.setKeySignature
+
     const handleSelectChange = (() => {
         let x = document.getElementById("keySelector").value
-        props.handleKeyChange(x)
+        setKeySignature(x)
     })
+
+    useEffect(() => {
+        setKeySignature("CMaj")
+    }, [])
     return ( 
         <div className="keySelectorContainer sightReadOptionContainer">
             <select name="Key" id="keySelector" className="sightReadOption" onChange={handleSelectChange}>

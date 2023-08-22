@@ -14,13 +14,13 @@ export default function SightRead() {
   let notesDown = outletContext.notesDown
   const mute = outletContext.mute
   const unmute = outletContext.unmute
+  const difficulty = outletContext.difficulty
+  const setHighScore = outletContext.setHighScore
+  const highScoreFacade = outletContext.highScoreFacade
 
   const [note, setNote] = useState(60)
-  const [keySignature, setKeySignature] = useState("CMaj")
   const [combo, setCombo] = useState(0)
-  const [highestCombo, setHighestCombo] = useState(0)
   const [showNotes, setshowNotes] = useState(true)
-  const [difficulty, setDifficulty] = useState("novice")
   const prevNote = useRef(0);
 
   //Reward sound effect setup
@@ -40,17 +40,21 @@ export default function SightRead() {
 
   const pickNote = (() => {
     switch(difficulty) {
-      case "novice":
+      //novice
+      case "0":
         setNote(Math.floor(Math.random() * 12) + 60)
         // setNote(95)
         break
-      case "advanced":
+      //advanced
+      case "1":
         setNote(Math.floor(Math.random() * 24) + 48)
         break
-      case "expert":
+      //expert
+      case "2":
         setNote(Math.floor(Math.random() * 36) + 48)
         break
-      case "goat":
+      //GOAT
+      case "3":
         setNote(Math.floor(Math.random() * 59) + 36)
         break
     }
@@ -66,16 +70,12 @@ export default function SightRead() {
       setCombo(0)
     }
 
-    if (combo > highestCombo) {
-      setHighestCombo(combo)
+    if (combo > highScoreFacade) {
+      setHighScore(combo)
     }
 
     prevNote.current = l
   }, [notesDown])
-
-  const handleKeyChange = (x) => {
-    setKeySignature(x)
-  }
 
   const resetCombo = (() => {
     setCombo(0)
@@ -88,13 +88,13 @@ export default function SightRead() {
   return (
     <div className="sightRead">
       <BackButton></BackButton>
-      <NoteDisplay note={note} keySignature={keySignature}></NoteDisplay>
-      <Combo combo={combo} highestCombo={highestCombo}></Combo>
+      <NoteDisplay note={note}></NoteDisplay>
+      <Combo combo={combo}></Combo>
       <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
       <PianoHelper noteOn={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
       <div className="optionContainer">
-        <KeySelector handleKeyChange={handleKeyChange}></KeySelector>
-        <DifficultySelector setDifficulty={setDifficulty}></DifficultySelector>
+        <KeySelector></KeySelector>
+        <DifficultySelector></DifficultySelector>
       </div>
     </div>
   )

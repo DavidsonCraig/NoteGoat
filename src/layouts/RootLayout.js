@@ -11,6 +11,9 @@ export default function RootLayout() {
     const [notesDown, setNotesDown] = useState({})
     const refNotesDown = useRef({})
 
+    const [difficulty, setDifficulty] = useState("0")
+    const [keySignature, setKeySignature] = useState("CMaj")
+
     const [achievements, setAchievements] = useState([
         ["00", "locked", "Hi!", "Start the game"],
         ["01", "locked", "First step", "Play a correct note"],
@@ -24,6 +27,178 @@ export default function RootLayout() {
         ["09", "locked", "G is for GOAT", "Play a correct G note"],
         ["10", "locked", "Ouch that's sharp!", "Play a correct sharp note"],
         ["11", "locked", "Flat tyre", "Play a correct Flat note"],
+    ])
+
+    const [highScoreFacade, setHighScoreFacade] = useState(0)
+    //Stats for each key signature
+    //Three blocks of four (Due to shallow comparison of react)
+    //Block 1 = High score
+    //Block 2 = Total correct notes
+    //Block 3 = Total incorrect notes
+    //Within each block: 0 = novice, 1 = advanced, 2 = expert, 3 = GOAT
+    //Chromatic
+    const [statsCMaj, setStatsCMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    //Sharps
+    const [statsGMaj, setStatsGMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsDMaj, setStatsDMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsAMaj, setStatsAMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsEMaj, setStatsEMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsBMaj, setStatsBMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsFSharpMaj, setStatsFSharpMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsCSharpMaj, setStatsCSharpMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    //Flats
+    const [statsFMaj, setStatsFMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsBFlatMaj, setStatsBFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsEFlatMaj, setStatsEFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsAFlatMaj, setStatsAFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsDFlatMaj, setStatsDFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsGFlatMaj, setStatsGFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsCFlatMaj, setStatsCFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+
+    const getStats = ((x) => {
+        switch(keySignature) {
+            //chromatic
+            case "CMaj":
+                return statsCMaj
+                break
+            //sharps
+            case "GMaj":
+                return statsGMaj
+                break
+            case "DMaj":
+                return statsDMaj
+                break
+            case "AMaj":
+                return statsAMaj
+                break
+            case "EMaj":
+                return statsEFlatMaj
+                break
+            case "BMaj":
+                return statsBMaj
+                break
+            case "FSharpMaj":
+                return statsFSharpMaj
+                break
+            case "CSharpMaj":
+                return statsCSharpMaj
+                break
+            //Flats
+            case "FMaj":
+                return statsFMaj
+                break
+            case "BFlatMaj":
+                return statsBFlatMaj
+                break
+            case "EFlatMaj":
+                return statsEFlatMaj
+                break
+            case "AFlatMaj":
+                return statsAFlatMaj
+                break
+            case "DFlatMaj":
+                return statsDFlatMaj
+                break
+            case "GFlatMaj":
+                return statsGFlatMaj
+                break
+            case "CFlatMaj":
+                return statsCFlatMaj
+                break
+            default:
+                return statsCMaj
+                break
+        }
+    })
+
+    const setStats = ((x) => {
+        switch(keySignature) {
+            //chromatic
+            case "CMaj":
+                setStatsCMaj(x)
+                break
+            //sharps
+            case "GMaj":
+                console.log("Gmaj")
+                setStatsGMaj(x)
+                break
+            case "DMaj":
+                setStatsDMaj(x)
+                break
+            case "AMaj":
+                setStatsAMaj(x)
+                break
+            case "EMaj":
+                setStatsEMaj(x)
+                break
+            case "BMaj":
+                setStatsBMaj(x)
+                break
+            case "FSharpMaj":
+                setStatsFSharpMaj(x)
+                break
+            case "CSharpMaj":
+                setStatsCSharpMaj(x)
+                break
+            //Flats
+            case "FMaj":
+                setStatsFMaj(x)
+                break
+            case "BFlatMaj":
+                setStatsBFlatMaj(x)
+                break
+            case "EFlatMaj":
+                setStatsEFlatMaj(x)
+                break
+            case "AFlatMaj":
+                setStatsAFlatMaj(x)
+                break
+            case "DFlatMaj":
+                setStatsDFlatMaj(x)
+                break
+            case "GFlatMaj":
+                setStatsGFlatMaj(x)
+                break
+            case "GFlatMaj":
+                setStatsGFlatMaj(x)
+                break
+            case "CFlatMaj":
+                setStatsCFlatMaj(x)
+                break
+            default:
+                setStatsCMaj(x)
+                break
+        }
+    })
+
+    const setHighScore = ((x) => {
+        let tmp = [...getStats()]
+        tmp[parseInt(difficulty)] = x 
+        setStats(tmp)
+    })
+
+    useEffect(() => {
+        let tmp = getStats()[parseInt(difficulty)]
+        setHighScoreFacade(tmp)
+    }, [keySignature, 
+        difficulty, 
+        statsCMaj,
+        //Sharps
+        statsGMaj,
+        statsDMaj,
+        statsAMaj,
+        statsEMaj,
+        statsBMaj,
+        statsFSharpMaj, 
+        statsCSharpMaj, 
+        //Flats
+        statsFMaj,
+        statsBFlatMaj,
+        statsEFlatMaj,
+        statsAFlatMaj,
+        statsDFlatMaj,
+        statsGFlatMaj,
+        statsCFlatMaj,
     ])
 
     const unlockAchievement = ((x) => {
@@ -51,7 +226,6 @@ export default function RootLayout() {
         }
         
     })
-
 
     const synth = useMemo(() => {
         Tone.start();
@@ -177,7 +351,19 @@ export default function RootLayout() {
 
     return (
         <div className="rootLayout">
-            <Outlet context={{notesDown: notesDown, toggleMute: toggleMute, mute: mute, unmute: unmute, achievements: achievements, unlockAchievement: unlockAchievement}}></Outlet>
+            <Outlet context={{
+                notesDown: notesDown, 
+                toggleMute: toggleMute, 
+                mute: mute, unmute: unmute, 
+                achievements: achievements, 
+                unlockAchievement: unlockAchievement,
+                difficulty: difficulty,
+                setDifficulty: setDifficulty,
+                keySignature: keySignature,
+                setKeySignature: setKeySignature,
+                highScoreFacade: highScoreFacade,
+                setHighScore: setHighScore,
+                }}></Outlet>
             <ToastContainer
                 position="bottom-left"
                 autoClose={3000}
@@ -190,6 +376,7 @@ export default function RootLayout() {
                 pauseOnHover
                 theme="colored"
                 />
+            <button onClick={() => {setHighScore(10)}}></button>
         </div>
     )
 }

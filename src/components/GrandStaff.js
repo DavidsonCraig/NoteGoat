@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router";
 
 const GrandStaff = (props) => {
     const [staffSharp1, setStaffSharp1] = useState(0)
@@ -17,7 +18,8 @@ const GrandStaff = (props) => {
     const [staffFlat6, setStaffFlat6] = useState(0)
     const [staffFlat7, setStaffFlat7] = useState(0)
 
-    const keySignature = props.keySignature
+    const outletContext = useOutletContext()
+    const keySignature = outletContext.keySignature
 
     //Helper
     const resetFlats = (() => {
@@ -248,9 +250,6 @@ const GrandStaff = (props) => {
                 break
             case "GFlatMaj":
                 gFlatMaj()
-                break
-            case "GFlatMaj":
-                cFlatMaj()
                 break
             case "CFlatMaj":
                 cFlatMaj()
