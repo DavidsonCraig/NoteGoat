@@ -3,6 +3,8 @@ import { Outlet } from "react-router"
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import * as Tone from "tone"
+import lock from "../images/lock.png"
+
 
 export default function RootLayout() {
     //Initialises base synth
@@ -30,10 +32,10 @@ export default function RootLayout() {
             tmp[x][1] = "unlocked"
             setAchievements(tmp)
             
-            toast(
+            toast.success(
                 <div className="toastContainer">
-                   <h1 className="toastTitle">{tmp[x][2]}</h1>
-                   <h2 className="toastSubtitle">{tmp[x][3]}</h2>
+                        <h1 className="toastTitle">{tmp[x][2]}</h1>
+                        <h2 className="toastSubtitle">{tmp[x][3]}</h2>
                 </div>,
                {
                    position: "bottom-left",
@@ -44,6 +46,7 @@ export default function RootLayout() {
                    draggable: false,
                    progress: undefined,
                    style: { background: '#4ec091ff', color: 'white'},
+                   icon: ({theme, type}) =>  <img src={lock} className="lock"/>
                    });
         }
         

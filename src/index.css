@@ -216,7 +216,7 @@ body {
     }
 }
 
-@media screen and (max-height: 680px) {
+@media screen and (max-height: 500px) {
     .noteDisplay {
         scale: 0.3;
     }
@@ -481,4 +481,8 @@ body {
     margin: 0;
     font-family: Roboto;
     font-weight: 100;
+}
+
+.lock {
+    height: 2vh;
 }
