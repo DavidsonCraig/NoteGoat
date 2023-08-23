@@ -13,8 +13,11 @@ export default function RootLayout() {
 
     const [difficulty, setDifficulty] = useState("0")
     const [keySignature, setKeySignature] = useState("CMaj")
+    const [totalCorrectNotes, setTotalCorrectNotes] = useState(0)
+    const [totalIncorrectNotes, setTotalIncorrectNotes] = useState(0)
 
-    const [achievements, setAchievements] = useState([
+    const [achievements, setAchievements] = useState(JSON.parse(localStorage.getItem("achievements")) ||
+        [
         ["00", "locked", "Hi!", "Start the game"],
         ["01", "locked", "First step", "Play a correct note"],
         ["02", "locked", "Graduated", "Complete the tutorial"],
@@ -37,23 +40,23 @@ export default function RootLayout() {
     //Block 3 = Total incorrect notes
     //Within each block: 0 = novice, 1 = advanced, 2 = expert, 3 = GOAT
     //Chromatic
-    const [statsCMaj, setStatsCMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsCMaj, setStatsCMaj] = useState(JSON.parse(localStorage.getItem("CMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
     //Sharps
-    const [statsGMaj, setStatsGMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsDMaj, setStatsDMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsAMaj, setStatsAMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsEMaj, setStatsEMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsBMaj, setStatsBMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsFSharpMaj, setStatsFSharpMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsCSharpMaj, setStatsCSharpMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsGMaj, setStatsGMaj] = useState(JSON.parse(localStorage.getItem("GMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsDMaj, setStatsDMaj] = useState(JSON.parse(localStorage.getItem("DMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsAMaj, setStatsAMaj] = useState(JSON.parse(localStorage.getItem("AMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsEMaj, setStatsEMaj] = useState(JSON.parse(localStorage.getItem("EMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsBMaj, setStatsBMaj] = useState(JSON.parse(localStorage.getItem("BMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsFSharpMaj, setStatsFSharpMaj] = useState(JSON.parse(localStorage.getItem("FSharpMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsCSharpMaj, setStatsCSharpMaj] = useState(JSON.parse(localStorage.getItem("CSharpMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
     //Flats
-    const [statsFMaj, setStatsFMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsBFlatMaj, setStatsBFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsEFlatMaj, setStatsEFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsAFlatMaj, setStatsAFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsDFlatMaj, setStatsDFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsGFlatMaj, setStatsGFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
-    const [statsCFlatMaj, setStatsCFlatMaj] = useState([0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsFMaj, setStatsFMaj] = useState(JSON.parse(localStorage.getItem("FMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsBFlatMaj, setStatsBFlatMaj] = useState(JSON.parse(localStorage.getItem("BFlatMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsEFlatMaj, setStatsEFlatMaj] = useState(JSON.parse(localStorage.getItem("EFlatMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsAFlatMaj, setStatsAFlatMaj] = useState(JSON.parse(localStorage.getItem("AFlatMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsDFlatMaj, setStatsDFlatMaj] = useState(JSON.parse(localStorage.getItem("DFlatMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsGFlatMaj, setStatsGFlatMaj] = useState(JSON.parse(localStorage.getItem("GFlatMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
+    const [statsCFlatMaj, setStatsCFlatMaj] = useState(JSON.parse(localStorage.getItem("CFlatMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
 
     const getStats = ((x) => {
         switch(keySignature) {
@@ -72,7 +75,7 @@ export default function RootLayout() {
                 return statsAMaj
                 break
             case "EMaj":
-                return statsEFlatMaj
+                return statsEMaj
                 break
             case "BMaj":
                 return statsBMaj
@@ -119,7 +122,6 @@ export default function RootLayout() {
                 break
             //sharps
             case "GMaj":
-                console.log("Gmaj")
                 setStatsGMaj(x)
                 break
             case "DMaj":
@@ -171,12 +173,22 @@ export default function RootLayout() {
         }
     })
 
-    const setHighScore = ((x) => {
+    const updateStats = ((x) => {
         let tmp = [...getStats()]
-        tmp[parseInt(difficulty)] = x 
+        if (x > highScoreFacade) {
+            tmp[parseInt(difficulty)] = x
+        }
+        tmp[parseInt(difficulty) + 4] += x 
+        tmp[parseInt(difficulty) + 8] += 1
         setStats(tmp)
+        setTotalCorrectNotes(totalCorrectNotes => totalCorrectNotes + x)
+        setTotalIncorrectNotes(TotalIncorrectNotes => TotalIncorrectNotes + 1)
+        if (x > 0) {
+            save(tmp)
+        }
     })
 
+    //Update highscore facade
     useEffect(() => {
         let tmp = getStats()[parseInt(difficulty)]
         setHighScoreFacade(tmp)
@@ -201,11 +213,17 @@ export default function RootLayout() {
         statsCFlatMaj,
     ])
 
+    const saveAchievements = ((x) => {
+        const tmp = JSON.stringify(x)
+        localStorage.setItem(`achievements`, tmp)
+    })
+
     const unlockAchievement = ((x) => {
         if (achievements[x][1] == "locked") {
             const tmp = [...achievements]
             tmp[x][1] = "unlocked"
             setAchievements(tmp)
+            saveAchievements(tmp)
             
             toast.success(
                 <div className="toastContainer">
@@ -349,6 +367,11 @@ export default function RootLayout() {
         synth.volume.value = 0
     })
 
+    const save = ((x) => {
+        const keyStats = JSON.stringify(x)
+        localStorage.setItem(`${keySignature}`, keyStats)
+    })
+
     return (
         <div className="rootLayout">
             <Outlet context={{
@@ -362,7 +385,8 @@ export default function RootLayout() {
                 keySignature: keySignature,
                 setKeySignature: setKeySignature,
                 highScoreFacade: highScoreFacade,
-                setHighScore: setHighScore,
+                updateStats: updateStats,
+                save: save,
                 }}></Outlet>
             <ToastContainer
                 position="bottom-left"
@@ -376,7 +400,6 @@ export default function RootLayout() {
                 pauseOnHover
                 theme="colored"
                 />
-            <button onClick={() => {setHighScore(10)}}></button>
         </div>
     )
 }

@@ -15,11 +15,12 @@ export default function SightRead() {
   const mute = outletContext.mute
   const unmute = outletContext.unmute
   const difficulty = outletContext.difficulty
-  const setHighScore = outletContext.setHighScore
-  const highScoreFacade = outletContext.highScoreFacade
-
+  const keySignature = outletContext.keySignature
+  const updateStats = outletContext.updateStats
+  
   const [note, setNote] = useState(60)
   const [combo, setCombo] = useState(0)
+  const [prevCombo, setPrevCombo] = useState(0)
   const [showNotes, setshowNotes] = useState(true)
   const prevNote = useRef(0);
 
@@ -43,7 +44,7 @@ export default function SightRead() {
       //novice
       case "0":
         setNote(Math.floor(Math.random() * 12) + 60)
-        // setNote(95)
+        setNote(95)
         break
       //advanced
       case "1":
@@ -67,17 +68,14 @@ export default function SightRead() {
       setCombo(combo + 1)
       rewardSFX.triggerAttackRelease(Tone.Frequency(Math.min(30 + combo, 60), "midi"), "16n");
     } else if (l > 0) {
-      setCombo(0)
+      resetCombo()
     }
-
-    if (combo > highScoreFacade) {
-      setHighScore(combo)
-    }
-
     prevNote.current = l
   }, [notesDown])
 
   const resetCombo = (() => {
+    updateStats(combo)
+    setPrevCombo(combo)
     setCombo(0)
   })
 
@@ -85,11 +83,16 @@ export default function SightRead() {
     pickNote()
   },[difficulty])
 
+  useEffect(() => {
+    setCombo(0)
+    setPrevCombo(0)
+  }, [difficulty, keySignature])
+
   return (
     <div className="sightRead">
       <BackButton></BackButton>
       <NoteDisplay note={note}></NoteDisplay>
-      <Combo combo={combo}></Combo>
+      <Combo combo={combo} prevCombo={prevCombo}></Combo>
       <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
       <PianoHelper noteOn={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
       <div className="optionContainer">
