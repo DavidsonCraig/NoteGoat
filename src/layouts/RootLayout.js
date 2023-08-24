@@ -6,6 +6,7 @@ import * as Tone from "tone"
 import lock from "../images/lock.png"
 
 
+
 export default function RootLayout() {
     //Initialises base synth
     const [notesDown, setNotesDown] = useState({})
@@ -370,6 +371,12 @@ export default function RootLayout() {
     const save = ((x) => {
         const keyStats = JSON.stringify(x)
         localStorage.setItem(`${keySignature}`, keyStats)
+
+        const totalCorrect = JSON.stringify(totalCorrectNotes)
+        localStorage.setItem("totalCorrectNotes", totalCorrect)
+
+        const totalIncorrect = JSON.stringify(totalIncorrectNotes)
+        localStorage.setItem("totalIncorrectNotes", totalIncorrect)
     })
 
     return (

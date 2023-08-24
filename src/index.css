@@ -361,7 +361,6 @@ body {
     position: fixed;
     display: flex;
     flex-direction: column;
-    width: 100%;
     align-items: flex-start;
     justify-content: center;
 }
@@ -489,4 +488,137 @@ body {
 
 .lock {
     height: 2vh;
+}
+
+/* tutorial */
+.tutorial {
+    width: 100%;
+    height: 100%;
+}
+.tutorialModalTitle {
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 7vh;
+    color: white;
+    margin: 2vh;
+}
+
+.tutorialModalText {
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 2.2vh;
+    color: white;
+    padding: 2vh 4vw;
+}
+
+.tutorialModalOkButton {
+    background-color: white;
+    color: black;
+    font-size: 5vh;
+    border: none;
+    font-family: Roboto;
+    font-weight: 100;
+    margin: 4vh;
+    position: fixed;
+    top: 75vh;
+}
+
+.tutorialModalOkButton:hover {
+    background-color: #4ec091ff;
+    color: black;
+}
+
+.tutorialModalInnerContainer {
+    display: inline-flex;
+    align-items: center;
+    margin: 5vh 15vw;
+}
+
+.tutorialModalOuterContainer {
+    display: flex;
+    position: fixed;
+    top: 0vh;
+    height: 80vh;
+    background-color: rgb(0, 39, 74);
+    flex-direction: column;
+    align-items: center;
+    border-top: 10vh solid #f2d8d8ff;
+    border-bottom: 10vh solid #f2d8d8;
+}
+.tutorialImage {
+    height: min(40vh, 20vw);
+}
+
+.tutorialTextContainer {
+    overflow: auto;
+    height: 40vh;
+}
+
+@media (orientation: portrait) {
+    .tutorialModalInnerContainer {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+    .tutorialImage {
+        height: min(40vh, 30vw);
+    }
+    .tutorialModalTitle {
+        font-size: 5vw;
+    }
+}
+
+.tutorialContainer {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tutorialTaskText {
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 2.2vh;
+    color: #00274aff;
+    font-size: 6vh;
+    margin-top: 5vh;
+    margin-bottom: 1vh;
+}
+
+.tutorialCounter {
+    font-family: Roboto;
+    font-weight: 100;
+    font-size: 2.2vh;
+    color: #00274aff;
+    font-size: 4vh;
+    margin: 0;
+}
+
+.tutorialHelpButton {
+    background-color: #00274aff;
+    color: white;
+    font-size: 5vh;
+    border: none;
+    font-family: Roboto;
+    font-weight: 100;
+    margin: 4vh;
+    transition: font-size 0.15s ease-in-out;
+    position: fixed;
+    top: 80vh;
+}
+
+.tutorialHelpButton:hover {
+    font-size: 6vh;
+}
+
+.tutorialContainer .noteDisplay {
+    position: fixed;
+    top: 11vh;
+}
+
+.tutorialContainer .pianoHelperContainer {
+    position: fixed;
+    top: 66vh;
 }

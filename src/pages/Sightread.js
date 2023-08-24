@@ -44,7 +44,7 @@ export default function SightRead() {
       //novice
       case "0":
         setNote(Math.floor(Math.random() * 12) + 60)
-        setNote(95)
+        setNote(60)
         break
       //advanced
       case "1":

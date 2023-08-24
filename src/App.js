@@ -9,11 +9,13 @@ import {
 import SightRead from "./pages/SightRead";
 import Splash from "./pages/Splash";
 import Main from "./pages/Main";
+import Settings from "./pages/Settings";
+import Achievements from "./pages/Achievements";
+import Tutorial from "./pages/Tutorial";
 
 // layouts
 import RootLayout from "./layouts/RootLayout";
-import Settings from "./pages/Settings";
-import Achievements from "./pages/Achievements";
+
 
 
 const router = createBrowserRouter(
@@ -24,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="sightread" element={<SightRead></SightRead>}></Route>
       <Route path="settings" element={<Settings></Settings>}></Route>
       <Route path="achievements" element={<Achievements></Achievements>}></Route>
+      <Route path="tutorial" element={<Tutorial></Tutorial>}></Route>
     </Route>
   )
 )

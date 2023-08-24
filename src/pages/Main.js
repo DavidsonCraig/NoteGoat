@@ -6,7 +6,6 @@ import anime from "animejs";
 export default function Main(props) {
 
     useEffect(() => {
-      console.log("Bruh")
       anime({
         targets: '.pianoMenuDecoration',
         translateY: ['25vh', '0vh'],
@@ -22,6 +21,7 @@ export default function Main(props) {
           <img src={piano} className="pianoMenuDecoration"></img>
         </div>
         <div className="menuOptionContainer">
+          <NavLink to="/tutorial" className="menuOption">Tutorial</NavLink>
           <NavLink to="/sightread" className="menuOption">Learn to read</NavLink>
           <NavLink to="/achievements" className="menuOption">Achievements</NavLink>
           <NavLink to="/settings" className="menuOption">Settings</NavLink>
