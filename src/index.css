@@ -544,6 +544,7 @@ body {
     align-items: center;
     border-top: 10vh solid #f2d8d8ff;
     border-bottom: 10vh solid #f2d8d8;
+    width: 100vw;
 }
 .tutorialImage {
     height: min(40vh, 20vw);
@@ -552,6 +553,7 @@ body {
 .tutorialTextContainer {
     overflow: auto;
     height: 40vh;
+    width: 35vw;
 }
 
 @media (orientation: portrait) {
@@ -620,5 +622,5 @@ body {
 
 .tutorialContainer .pianoHelperContainer {
     position: fixed;
-    top: 66vh;
+    top: 68vh;
 }

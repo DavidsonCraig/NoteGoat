@@ -1,19 +1,40 @@
 import { useState } from "react";
+
 import tutorial_1 from "../images/tutorial_1.png"
 import tutorial_2 from "../images/tutorial_2.png"
+import tutorial_3 from "../images/tutorial_3.png"
+import tutorial_4 from "../images/tutorial_4.png"
+import tutorial_5 from "../images/tutorial_5.png"
+import tutorial_6 from "../images/tutorial_6.png"
+import tutorial_7 from "../images/tutorial_7.png"
+import tutorial_8 from "../images/tutorial_8.png"
+import tutorial_9 from "../images/tutorial_9.png"
+import tutorial_10 from "../images/tutorial_10.png"
+import tutorial_11 from "../images/tutorial_11.png"
+import tutorial_12 from "../images/tutorial_12.png"
+import tutorial_13 from "../images/tutorial_13.png"
+import tutorial_14 from "../images/tutorial_14.png"
+import tutorial_15 from "../images/tutorial_15.png"
+import tutorial_16 from "../images/tutorial_16.png"
+import tutorial_17 from "../images/tutorial_17.png"
+
 import BackButton from "../components/BackButton"
 import NoteDisplay from "../components/NoteDisplay";
 import PianoHelper from "../components/PianoHelper"
-
+import tutorialText from "../text/TutorialText";
+import tutorialChallengesText from "../text/TutorialChallengesText";
+import tutorialTitles from "../text/TutorialTitles";
+import { useEffect } from "react";
 
 const Tutorial = () => {
-    const tutorialModalMessages = [
-        ["Hi there!", "Welcome to Note Goat!"]
-    ]
     const [note, setNote] = useState(60)
     const [combo, setCombo] = useState(0)
     const [tutorialStep, setTutorialStep] = useState(0)
     const [modalStyle, setmodalStyle] = useState({visibility:"hidden"})
+    const [tutorialTitle, setTutororialTitle] = useState(tutorialTitles[tutorialStep])
+    const [tutorialBodyText, setTutorialBodyText] = useState(tutorialText[tutorialStep])
+    const [tutorialChallengeText, setTutorialChallengeText] = useState(tutorialChallengesText[tutorialStep])
+    const [image, setImage] = useState(tutorial_1)
 
     const openModal = (() => {
         setmodalStyle({visibility:"visible"})
@@ -23,26 +44,132 @@ const Tutorial = () => {
         setmodalStyle({visibility:"hidden"})
     })
 
+    const handleOkButton = (() => {
+        if (tutorialStep > 22 && tutorialStep != 29) {
+            setTutorialStep(tutorialStep => tutorialStep + 1)
+        } else {
+            closeModal()
+        }
+    })
+
+    const pickNote = (() => {
+        // Notes are unlocked in this order represented as midi notes
+        const noteSelection = [60,62,64,65,67,69,71,61,63,66,68,70]
+        const cappedStep = Math.min(tutorialStep, 22)
+        let tmp
+        if (cappedStep % 2 === 0 && cappedStep != 0) {
+            tmp = Math.floor(Math.random() * ((cappedStep)/2 + 1))
+        } else {
+            tmp = Math.floor((cappedStep + 1)/2)
+        }
+        console.log(noteSelection[tmp])
+        setNote(noteSelection[tmp])
+    })
+
+    const setTutorialImage = (() => {
+        switch(tutorialStep) {
+            case 0:
+                setImage(tutorial_1)
+                break
+            case 1:
+            case 2:
+                setImage(tutorial_2)
+                break
+            case 3:
+            case 4:
+                setImage(tutorial_3)
+                break
+            case 5:
+            case 6:
+                setImage(tutorial_4)
+                break
+            case 7:
+            case 8:
+                setImage(tutorial_5)
+                break
+            case 9:
+            case 10:
+                setImage(tutorial_6)
+                break
+            case 11:
+            case 12:
+                setImage(tutorial_7)
+                break
+            case 13:
+            case 14:
+                setImage(tutorial_8)
+                break
+            case 15:
+            case 16:
+                setImage(tutorial_9)
+                break
+            case 17:
+            case 18:
+                setImage(tutorial_10)
+                break
+            case 19:
+            case 20:
+                setImage(tutorial_11)
+                break
+            case 21:
+            case 22:
+                setImage(tutorial_12)
+                break
+            case 23:
+                setImage(tutorial_14)
+                break
+            case 24:
+                setImage(tutorial_13)
+                break
+            case 25:
+                setImage(tutorial_14)
+                break
+            case 26:
+                setImage(tutorial_15)
+                break
+            case 27:
+                setImage(tutorial_16)
+                break
+            case 28:
+                setImage(tutorial_17)
+                break
+            case 29:
+                setImage(tutorial_14)
+                break
+        }
+    })
+
+    useEffect(() => {
+        setTutororialTitle(tutorialTitles[tutorialStep])
+        setTutorialChallengeText(tutorialChallengesText[tutorialStep])
+        setTutorialBodyText(tutorialText[tutorialStep])
+        setTutorialImage()
+    }, [tutorialStep])
+
+    const handleUpdate = (() => {
+        setTutorialStep(tutorialStep => tutorialStep + 1)
+    })
+
 
     return ( 
         <div className="tutorial" id="tutorial">
             <BackButton></BackButton>
             <div className="tutorialContainer">
-                <h1 className="tutorialTaskText">Get 5 Correct Notes in a row</h1>
-                <h1 className="tutorialCounter">{combo}/5</h1>
+                <h1 className="tutorialTaskText">{tutorialChallengeText}</h1>
+                <h1 className="tutorialCounter">{combo}</h1>
                 <NoteDisplay note={note} className="tutorialNoteDisplay"></NoteDisplay>
                 <PianoHelper noteOn={[note]} combo={combo} showNotes={false}></PianoHelper>
                 <button className="tutorialHelpButton tutorialOkButton"onClick={() => {openModal()}}>Help</button>
             </div>
         <div className="tutorialModalOuterContainer" style={modalStyle}>
-                <h1 className="tutorialModalTitle">D</h1>
+                <h1 className="tutorialModalTitle" onClick={pickNote}>{tutorialTitle}</h1>
                 <div className="tutorialModalInnerContainer">
-                    <img src={tutorial_1} className="tutorialImage"></img>
+                    <img src={image} className="tutorialImage" onClick={handleUpdate}></img>
                     <div className="tutorialTextContainer">
-                        <h1 className="tutorialModalText">Welcome to Note Goat! This app will teach you how to read piano sheet music in a flash. To start lets go over some basics. Looking at a piano might look overwhelming, especially with how may keys there are! Thankfully there are only 12 notes. A, A#, B, C, C#, D, D#, E, E#. F, G#. These 12 notes repeat in that same order for all the keys in a piano. The change in pitch between any two notes that are next to each other is called a semitone. Don't worry about the sharps symbol (#) for now. Just now that every single key on a piano is one of these notes. With that theory out of the way lets start playing. We will start with the Middle C note. Aptly named due its position on the piano; right in the middle. Use the piano helper to find it's position (It will be highlighted green) and press it 5 times in a row to continue to the next stage.</h1>
+                        <h1 className="tutorialModalText">{tutorialBodyText}</h1>
                     </div>
                 </div>
-                <button className="tutorialModalOkButton" onClick={closeModal}>Ok</button>
+                <button className="tutorialModalOkButton" onClick={handleOkButton}>Ok</button>
             </div>
         </div>
      );
