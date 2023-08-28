@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router";
 import BackButton from "../components/BackButton";
 import PianoHelper from "../components/PianoHelper";
 import { useEffect } from "react";
+import FreeplayAchievements from "../components/FreeplayAchievements";
 
 const Freeplay = () => {
     const outletContext = useOutletContext()
@@ -13,6 +14,7 @@ const Freeplay = () => {
     
     return ( 
         <div className="freeplay">
+            <FreeplayAchievements></FreeplayAchievements>
             <BackButton></BackButton>
             <div className="freeplayInnerContainer">
                 <h1 className="freeplayTitle">Freeplay</h1>

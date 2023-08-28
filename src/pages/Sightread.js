@@ -10,6 +10,7 @@ import Combo from "../components/Combo"
 import BackButton from "../components/BackButton"
 import { Flip, toast } from "react-toastify"
 import anime from "animejs"
+import SightReadAchievements from "../components/SightReadAchievements"
 
 export default function SightRead() {
   let outletContext = useOutletContext()
@@ -51,6 +52,7 @@ export default function SightRead() {
       //novice
       case "0":
         setNote(Math.floor(Math.random() * 12) + 60)
+        setNote(60)
         break
       //advanced
       case "1":
@@ -101,6 +103,7 @@ export default function SightRead() {
   return (
     <div className="sightRead">
       <BackButton></BackButton>
+      <SightReadAchievements prevCombo={prevCombo}></SightReadAchievements>
       <NoteDisplay note={note}></NoteDisplay>
       <Combo combo={combo} prevCombo={prevCombo}></Combo>
       <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
