@@ -1,12 +1,15 @@
 import { useOutletContext } from "react-router";
 import BackButton from "../components/BackButton";
 import PianoHelper from "../components/PianoHelper";
+import { useEffect } from "react";
 
 const Freeplay = () => {
     const outletContext = useOutletContext()
-    const mute = outletContext.mute
-    const unmute = outletContext.unmute
-    unmute()
+    const mutePiano = outletContext.mutePiano
+    
+    useEffect(() => {
+        mutePiano.current = false
+    }, [])
     
     return ( 
         <div className="freeplay">

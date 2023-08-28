@@ -26,6 +26,7 @@ import tutorialChallengesText from "../text/TutorialChallengesText";
 import tutorialTitles from "../text/TutorialTitles";
 import { useEffect } from "react";
 import { useOutletContext } from "react-router";
+import TutorialAchievements from "../components/TutorialAchievements";
 
 const Tutorial = () => {
     const [note, setNote] = useState(60)
@@ -41,6 +42,7 @@ const Tutorial = () => {
     const outletContext = useOutletContext()
     const notesDown = outletContext.notesDown
     const unlockAchievement = outletContext.unlockAchievement
+    const mutePiano = outletContext.mutePiano
 
     const prevNote = useRef(0);
 
@@ -187,8 +189,13 @@ const Tutorial = () => {
         }
     }, [combo])
 
+    useEffect(() => {
+        mutePiano.current = false
+    }, [])
+
     return ( 
         <div className="tutorial" id="tutorial">
+            <TutorialAchievements combo={combo} prevNote={prevNote} tutorialStep={tutorialStep} note={note}></TutorialAchievements>
             <BackButton></BackButton>
             <div className="tutorialContainer">
                 <h1 className="tutorialTaskText">{tutorialChallengeText}</h1>

@@ -6,8 +6,7 @@ import { toast } from "react-toastify";
 const Achievements = () => {
     const outletContext = useOutletContext()
     const achievements = outletContext.achievements
-    const setAchievements = outletContext.setAchievements
-    console.log(achievements)
+    const unlockAchievement = outletContext.unlockAchievement
 
     return ( 
         <div className="achievements">

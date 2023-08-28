@@ -5,6 +5,7 @@ import { NavLink, useOutletContext } from "react-router-dom";
 export default function Splash() {
   const outletContext = useOutletContext()
   const unlockAchievement = outletContext.unlockAchievement
+  const mutePiano = outletContext.mutePiano
 
   const handleTitleAnimation = (() => {
     anime({
@@ -26,6 +27,10 @@ export default function Splash() {
   useEffect(() => {
     setTimeout(handleTitleAnimation, 1000)
     setTimeout(handleStartButtonAnimation, 2500)
+  }, [])
+
+  useEffect(() => {
+    mutePiano.current = true
   }, [])
   
     return (

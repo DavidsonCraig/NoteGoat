@@ -14,11 +14,11 @@ import anime from "animejs"
 export default function SightRead() {
   let outletContext = useOutletContext()
   let notesDown = outletContext.notesDown
-  const mute = outletContext.mute
-  const unmute = outletContext.unmute
+  const mutePiano = outletContext.mutePiano
   const difficulty = outletContext.difficulty
   const keySignature = outletContext.keySignature
   const updateStats = outletContext.updateStats
+  const systemMute = outletContext.systemMute
   
   const [note, setNote] = useState(60)
   const [combo, setCombo] = useState(0)
@@ -28,7 +28,6 @@ export default function SightRead() {
 
   //Reward sound effect setup
   const rewardSFX = useMemo(() => {
-    mute()
     const x = new Tone.Sampler({
         urls: {
           "C6": "bottlecap_1.mp3",
@@ -42,11 +41,10 @@ export default function SightRead() {
   }, [])
 
   const triggerRewardSFX = (() => {
-    if (rewardSFX.loaded) {
+    if (rewardSFX.loaded && !systemMute.current) {
       rewardSFX.triggerAttackRelease(Tone.Frequency(Math.min(30 + combo, 60), "midi"), "16n");
     }
   })
-
 
   const pickNote = (() => {
     switch(difficulty) {
@@ -95,6 +93,10 @@ export default function SightRead() {
     setCombo(0)
     setPrevCombo(0)
   }, [difficulty, keySignature])
+
+  useEffect(() => {
+    mutePiano.current = true
+  }, [])
 
   return (
     <div className="sightRead">

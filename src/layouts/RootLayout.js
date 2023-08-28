@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import * as Tone from "tone"
 import lock from "../images/lock.png"
+import achievementsSource from "../text/AchievementsSource";
 
 
 
@@ -17,26 +18,16 @@ export default function RootLayout() {
     const [totalCorrectNotes, setTotalCorrectNotes] = useState(0)
     const [totalIncorrectNotes, setTotalIncorrectNotes] = useState(0)
     const [currency, setCurrency] = useState(0)
+    const [midiStatus, setMidiStatus] = useState(null)
+    const mutePiano = useRef(false)
+    const systemMute = useRef(false)
+
 
     const earnCurrency = ((x) => {
         setCurrency(currency => currency + x)
     })
 
-    const [achievements, setAchievements] = useState(JSON.parse(localStorage.getItem("achievements")) ||
-        [
-        ["00", "locked", "Hi!", "Start the game"],
-        ["01", "locked", "First step", "Play a correct note"],
-        ["02", "locked", "Graduated", "Complete the tutorial"],
-        ["03", "locked", "A is for Aardvark", "Play a correct A note"],
-        ["04", "locked", "B is for Beaver", "Play a correct B note"],
-        ["05", "locked", "C is for Cow", "Play a correct C note"],
-        ["06", "locked", "D is for Duck", "Play a correct D note"],
-        ["07", "locked", "E is for Elephant", "Play a correct E note"],
-        ["08", "locked", "F is for Fox", "Play a correct F note"],
-        ["09", "locked", "G is for GOAT", "Play a correct G note"],
-        ["10", "locked", "Ouch that's sharp!", "Play a correct sharp note"],
-        ["11", "locked", "Flat tyre", "Play a correct Flat note"],
-    ])
+    const [achievements, setAchievements] = useState(JSON.parse(localStorage.getItem("achievements")) || achievementsSource)
 
     const [highScoreFacade, setHighScoreFacade] = useState(0)
     //Stats for each key signature
@@ -225,6 +216,10 @@ export default function RootLayout() {
     })
 
     const unlockAchievement = ((x) => {
+        if (x > 406 || x < 0) {
+            return
+        }
+        
         if (achievements[x][1] == "locked") {
             const tmp = [...achievements]
             tmp[x][1] = "unlocked"
@@ -310,14 +305,23 @@ export default function RootLayout() {
     })
 
     const updateDevices = ((event) => {
-        console.log(`${event.port.name}, State: ${event.port.state}`)
+        let x = `${event.port.name}, State: ${event.port.state}`
+        console.log(x)
+        setMidiStatus(x)
+        
     })
 
     const noteOn = ((note, velocity) => {
-        synth.triggerAttack(Tone.Frequency(note, "midi"), Tone.now(), velocity / 100)
+        if (!systemMute.current && !mutePiano.current) {
+            synth.triggerAttack(Tone.Frequency(note, "midi"), Tone.now(), velocity / 100)
+        }
         refNotesDown.current[note] = ""
         setNotesDown({...refNotesDown.current})
     })
+
+    useEffect(() => {
+        console.log(mutePiano)
+    }, [mutePiano])
 
     const noteOff = ((note) => {
         synth.triggerRelease(Tone.Frequency(note, "midi"))
@@ -359,22 +363,6 @@ export default function RootLayout() {
         });
     })
 
-    const toggleMute = (() => {
-        if (synth.volume.value == -100) {
-            synth.volume.value = 0
-        } else {
-            synth.volume.value = -100
-        }
-    })
-
-    const mute = (() => {
-        synth.volume.value = -100
-    })
-
-    const unmute = (() => {
-        synth.volume.value = 0
-    })
-
     const save = ((x) => {
         const keyStats = JSON.stringify(x)
         localStorage.setItem(`${keySignature}`, keyStats)
@@ -390,8 +378,7 @@ export default function RootLayout() {
         <div className="rootLayout">
             <Outlet context={{
                 notesDown: notesDown, 
-                toggleMute: toggleMute, 
-                mute: mute, unmute: unmute, 
+                mutePiano: mutePiano,
                 achievements: achievements, 
                 unlockAchievement: unlockAchievement,
                 difficulty: difficulty,
@@ -401,6 +388,8 @@ export default function RootLayout() {
                 highScoreFacade: highScoreFacade,
                 updateStats: updateStats,
                 save: save,
+                midiStatus: midiStatus,
+                systemMute: systemMute,
                 }}></Outlet>
             <ToastContainer
                 position="bottom-left"
