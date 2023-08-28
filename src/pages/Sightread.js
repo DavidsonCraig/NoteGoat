@@ -8,6 +8,8 @@ import DifficultySelector from "../components/DifficultySelector"
 import NoteDisplay from "../components/NoteDisplay"
 import Combo from "../components/Combo"
 import BackButton from "../components/BackButton"
+import { Flip, toast } from "react-toastify"
+import anime from "animejs"
 
 export default function SightRead() {
   let outletContext = useOutletContext()
@@ -25,7 +27,7 @@ export default function SightRead() {
   const prevNote = useRef(0);
 
   //Reward sound effect setup
-  const rewardSFX =  useMemo(() => {
+  const rewardSFX = useMemo(() => {
     mute()
     const x = new Tone.Sampler({
         urls: {
@@ -39,12 +41,18 @@ export default function SightRead() {
     return x
   }, [])
 
+  const triggerRewardSFX = (() => {
+    if (rewardSFX.loaded) {
+      rewardSFX.triggerAttackRelease(Tone.Frequency(Math.min(30 + combo, 60), "midi"), "16n");
+    }
+  })
+
+
   const pickNote = (() => {
     switch(difficulty) {
       //novice
       case "0":
         setNote(Math.floor(Math.random() * 12) + 60)
-        setNote(60)
         break
       //advanced
       case "1":
@@ -66,7 +74,7 @@ export default function SightRead() {
     if (note in notesDown && l == 1 && prevNote.current == 0) {
       pickNote()
       setCombo(combo + 1)
-      rewardSFX.triggerAttackRelease(Tone.Frequency(Math.min(30 + combo, 60), "midi"), "16n");
+      triggerRewardSFX()
     } else if (l > 0) {
       resetCombo()
     }
@@ -94,7 +102,7 @@ export default function SightRead() {
       <NoteDisplay note={note}></NoteDisplay>
       <Combo combo={combo} prevCombo={prevCombo}></Combo>
       <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
-      <PianoHelper noteOn={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
+      <PianoHelper highlightedNotes={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
       <div className="optionContainer">
         <KeySelector></KeySelector>
         <DifficultySelector></DifficultySelector>

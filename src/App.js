@@ -12,6 +12,7 @@ import Main from "./pages/Main";
 import Settings from "./pages/Settings";
 import Achievements from "./pages/Achievements";
 import Tutorial from "./pages/Tutorial";
+import Freeplay from "./pages/Freeplay";
 
 // layouts
 import RootLayout from "./layouts/RootLayout";
@@ -27,6 +28,7 @@ const router = createBrowserRouter(
       <Route path="settings" element={<Settings></Settings>}></Route>
       <Route path="achievements" element={<Achievements></Achievements>}></Route>
       <Route path="tutorial" element={<Tutorial></Tutorial>}></Route>
+      <Route path="freeplay" element={<Freeplay></Freeplay>}></Route>
     </Route>
   )
 )

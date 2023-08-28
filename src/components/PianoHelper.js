@@ -1,23 +1,40 @@
 import { useEffect } from "react";
+import { useOutletContext } from "react-router";
 
 const PianoHelper = (props) => {
-    const noteOn = props.noteOn
+    const highlightedNotes = props.highlightedNotes
     const combo = props.combo
     const showNotes = props.showNotes
-    const difficulty = props.difficulty
-    const filledColor = "#4ec091ff"
+    const highlightedColor = "#4ec091ff"
+    const noteDownColor = "#c04e7eff"
     const whiteNoteColor = "#f2d8d8ff"
     const blackNoteColor = "#00274aff"
+
+    const outletContext = useOutletContext()
+    const notesDown = outletContext.notesDown
+
+    const isValidNote = ((x) => {
+        return x <= 95 && x >= 36
+    })
 
     useEffect(() => {
         document.querySelectorAll(".whiteNote").forEach(element => element.style.backgroundColor = whiteNoteColor)
         document.querySelectorAll(".blackNote").forEach(element => element.style.backgroundColor = blackNoteColor)
-        if (combo === 0 || showNotes) {
-            for (let i=0; i < noteOn.length; i++) {
-                document.getElementById(`mn` + `${noteOn[i]}`).style.backgroundColor = filledColor
+
+        let notesDownArr = Object.keys(notesDown)
+
+        for (let i=0; i < notesDownArr.length; i++) {
+            if (isValidNote(notesDownArr[i])) {
+            document.getElementById(`mn` + `${notesDownArr[i]}`).style.backgroundColor = noteDownColor
             }
         }
-    }, [combo,noteOn])
+
+        if (combo === 0 || showNotes) {
+            for (let i=0; i < highlightedNotes.length; i++) {
+                document.getElementById(`mn` + `${highlightedNotes[i]}`).style.backgroundColor = highlightedColor
+            }
+        }
+    }, [combo,highlightedNotes,notesDown])
 
     return ( 
         <div className="pianoHelperContainer">

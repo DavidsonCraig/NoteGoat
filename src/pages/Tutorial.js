@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import tutorial_1 from "../images/tutorial_1.png"
 import tutorial_2 from "../images/tutorial_2.png"
@@ -25,16 +25,24 @@ import tutorialText from "../text/TutorialText";
 import tutorialChallengesText from "../text/TutorialChallengesText";
 import tutorialTitles from "../text/TutorialTitles";
 import { useEffect } from "react";
+import { useOutletContext } from "react-router";
 
 const Tutorial = () => {
     const [note, setNote] = useState(60)
     const [combo, setCombo] = useState(0)
     const [tutorialStep, setTutorialStep] = useState(0)
-    const [modalStyle, setmodalStyle] = useState({visibility:"hidden"})
+    const [modalStyle, setmodalStyle] = useState({visibility:"visible"})
     const [tutorialTitle, setTutororialTitle] = useState(tutorialTitles[tutorialStep])
     const [tutorialBodyText, setTutorialBodyText] = useState(tutorialText[tutorialStep])
     const [tutorialChallengeText, setTutorialChallengeText] = useState(tutorialChallengesText[tutorialStep])
     const [image, setImage] = useState(tutorial_1)
+    const [showNotes, setshowNotes] = useState(false)
+
+    const outletContext = useOutletContext()
+    const notesDown = outletContext.notesDown
+    const unlockAchievement = outletContext.unlockAchievement
+
+    const prevNote = useRef(0);
 
     const openModal = (() => {
         setmodalStyle({visibility:"visible"})
@@ -62,7 +70,6 @@ const Tutorial = () => {
         } else {
             tmp = Math.floor((cappedStep + 1)/2)
         }
-        console.log(noteSelection[tmp])
         setNote(noteSelection[tmp])
     })
 
@@ -139,17 +146,46 @@ const Tutorial = () => {
         }
     })
 
+    const tutorialUnlockAchievements = (() => {
+
+    })
+
     useEffect(() => {
         setTutororialTitle(tutorialTitles[tutorialStep])
         setTutorialChallengeText(tutorialChallengesText[tutorialStep])
         setTutorialBodyText(tutorialText[tutorialStep])
         setTutorialImage()
+        pickNote()
+        openModal()
+        setCombo(0)
     }, [tutorialStep])
 
-    const handleUpdate = (() => {
+    const advanceTutorial = (() => {
+        tutorialUnlockAchievements()
         setTutorialStep(tutorialStep => tutorialStep + 1)
     })
 
+    useEffect(() => {
+        let l = Object.keys(notesDown).length
+        if (note in notesDown && l == 1 && prevNote.current == 0) {
+          pickNote()
+          setCombo(combo + 1)
+        } else if (l > 0) {
+          setCombo(0)
+        }
+
+        if (prevNote.current == 0 && l > 0 && tutorialStep < 23) {
+            closeModal()
+        }
+
+        prevNote.current = l
+      }, [notesDown])
+
+    useEffect(() => {
+        if (combo >= 5) {
+            advanceTutorial()
+        }
+    }, [combo])
 
     return ( 
         <div className="tutorial" id="tutorial">
@@ -158,13 +194,13 @@ const Tutorial = () => {
                 <h1 className="tutorialTaskText">{tutorialChallengeText}</h1>
                 <h1 className="tutorialCounter">{combo}</h1>
                 <NoteDisplay note={note} className="tutorialNoteDisplay"></NoteDisplay>
-                <PianoHelper noteOn={[note]} combo={combo} showNotes={false}></PianoHelper>
+                <PianoHelper highlightedNotes={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
                 <button className="tutorialHelpButton tutorialOkButton"onClick={() => {openModal()}}>Help</button>
             </div>
-        <div className="tutorialModalOuterContainer" style={modalStyle}>
+            <div className="tutorialModalOuterContainer" style={modalStyle}>
                 <h1 className="tutorialModalTitle" onClick={pickNote}>{tutorialTitle}</h1>
                 <div className="tutorialModalInnerContainer">
-                    <img src={image} className="tutorialImage" onClick={handleUpdate}></img>
+                    <img src={image} className="tutorialImage" onClick={advanceTutorial}></img>
                     <div className="tutorialTextContainer">
                         <h1 className="tutorialModalText">{tutorialBodyText}</h1>
                     </div>

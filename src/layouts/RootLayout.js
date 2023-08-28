@@ -16,6 +16,11 @@ export default function RootLayout() {
     const [keySignature, setKeySignature] = useState("CMaj")
     const [totalCorrectNotes, setTotalCorrectNotes] = useState(0)
     const [totalIncorrectNotes, setTotalIncorrectNotes] = useState(0)
+    const [currency, setCurrency] = useState(0)
+
+    const earnCurrency = ((x) => {
+        setCurrency(currency => currency + x)
+    })
 
     const [achievements, setAchievements] = useState(JSON.parse(localStorage.getItem("achievements")) ||
         [
@@ -327,17 +332,19 @@ export default function RootLayout() {
 
         //Note off can either be MIDI-144 with no velocity or MIDI 128
         //May be more MIDI signal numbers to research
-        switch (command) {
-            case 144:
-                if (velocity > 0) {
-                    noteOn(note, velocity)
-                } else {
+        if (synth.loaded) {
+            switch (command) {
+                case 144:
+                    if (velocity > 0) {
+                        noteOn(note, velocity)
+                    } else {
+                        noteOff(note)
+                    }
+                    break
+                case 128:
                     noteOff(note)
-                }
-                break
-            case 128:
-                noteOff(note)
-                break
+                    break
+            }
         }
     })
 
