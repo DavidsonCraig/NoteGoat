@@ -5,6 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import * as Tone from "tone"
 import lock from "../images/lock.png"
 import achievementsSource from "../text/AchievementsSource";
+import RootAchievements from "../components/RootAchievements";
 
 
 
@@ -403,6 +404,25 @@ export default function RootLayout() {
                 pauseOnHover
                 theme="colored"
                 />
+            <RootAchievements 
+            statsCMaj={statsCMaj}
+            statsGMaj={statsGMaj}
+            statsDMaj={statsDMaj}
+            statsAMaj={statsAMaj}
+            statsEMaj={statsEMaj}
+            statsBMaj={statsBMaj}
+            statsFSharpMaj={statsFSharpMaj}
+            statsCSharpMaj={statsCSharpMaj}
+            statsFMaj={statsFMaj}
+            statsBFlatMaj={statsBFlatMaj}
+            statsEFlatMaj={statsEFlatMaj}
+            statsAFlatMaj={statsAFlatMaj}
+            statsDFlatMaj={statsDFlatMaj}
+            statsGFlatMaj={statsGFlatMaj}
+            statsCFlatMaj={statsCFlatMaj}
+            totalCorrectNotes={totalCorrectNotes}
+            unlockAchievement={unlockAchievement}
+            ></RootAchievements>
         </div>
     )
 }
