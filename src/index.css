@@ -19,6 +19,7 @@ body {
 
 #root {
     height: 100%;
+    user-select: none;
 }
 
 /* Root Layout */

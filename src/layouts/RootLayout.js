@@ -25,6 +25,10 @@ export default function RootLayout() {
     const systemMute = useRef(false)
 
 
+    ondragstart = (event) => {
+        event.preventDefault()
+    }
+    
     const earnCurrency = ((x) => {
         setCurrency(currency => currency + x)
     })
@@ -315,11 +319,13 @@ export default function RootLayout() {
     })
 
     const noteOn = ((note, velocity) => {
-        if (!systemMute.current && !mutePiano.current) {
-            synth.triggerAttack(Tone.Frequency(note, "midi"), Tone.now(), velocity / 100)
+        if (synth.loaded) {
+            if (!systemMute.current && !mutePiano.current) {
+                synth.triggerAttack(Tone.Frequency(note, "midi"), Tone.now(), velocity / 100)
+            }
+            refNotesDown.current[note] = ""
+            setNotesDown({...refNotesDown.current})    
         }
-        refNotesDown.current[note] = ""
-        setNotesDown({...refNotesDown.current})
     })
 
     useEffect(() => {
@@ -327,9 +333,11 @@ export default function RootLayout() {
     }, [mutePiano])
 
     const noteOff = ((note) => {
-        synth.triggerRelease(Tone.Frequency(note, "midi"))
-        delete refNotesDown.current[note]
-        setNotesDown({...refNotesDown.current})
+        if (synth.loaded && note in refNotesDown.current) {
+            synth.triggerRelease(Tone.Frequency(note, "midi"))
+            delete refNotesDown.current[note]
+            setNotesDown({...refNotesDown.current})    
+        }
     })
 
     const handleInput = ((input) => {
@@ -393,6 +401,8 @@ export default function RootLayout() {
                 save: save,
                 midiStatus: midiStatus,
                 systemMute: systemMute,
+                noteOn: noteOn,
+                noteOff: noteOff,
                 }}></Outlet>
             <ToastContainer
                 position="bottom-left"
