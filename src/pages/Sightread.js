@@ -52,7 +52,6 @@ export default function SightRead() {
       //novice
       case "0":
         setNote(Math.floor(Math.random() * 12) + 60)
-        setNote(60)
         break
       //advanced
       case "1":
@@ -67,6 +66,7 @@ export default function SightRead() {
         setNote(Math.floor(Math.random() * 59) + 36)
         break
     }
+    setNote(60)
   })
 
   useEffect(() => {
