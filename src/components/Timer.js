@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useRef } from "react";
 import anime from "animejs";
 
 const Timer = (props) => {
@@ -27,6 +27,13 @@ const Timer = (props) => {
                 duration: comboTime - (Math.min((combo * 100), 2500)),
             })
         }
+
+        return (() => {
+            clearTimeout(timeoutRef.current)
+            if (animeRef.current) {
+                animeRef.current.reset();
+            }
+        })
     },[combo])
 
     return ( 

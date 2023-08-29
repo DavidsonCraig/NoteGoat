@@ -4,12 +4,9 @@ import { useOutletContext } from "react-router";
 const TutorialAchievements = (props) => {
     const outletContext = useOutletContext()
     const unlockAchievement = outletContext.unlockAchievement
-    const notesDown = outletContext.notesDown
 
     const combo = props.combo
-    const prevNote = props.prevNote 
     const tutorialStep = props.tutorialStep 
-    const note = props.note
     
     useEffect(() => {
         if (combo > 0) {

@@ -328,10 +328,6 @@ export default function RootLayout() {
         }
     })
 
-    useEffect(() => {
-        console.log(mutePiano)
-    }, [mutePiano])
-
     const noteOff = ((note) => {
         if (synth.loaded && note in refNotesDown.current) {
             synth.triggerRelease(Tone.Frequency(note, "midi"))
@@ -364,7 +360,6 @@ export default function RootLayout() {
     })
 
     const MIDIsuccess = ((acess) => {
-        console.log(acess)
         acess.onstatechange = updateDevices
 
         let inputs = acess.inputs

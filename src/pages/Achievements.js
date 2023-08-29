@@ -1,12 +1,9 @@
-import { useState } from "react";
 import BackButton from "../components/BackButton";
 import { useOutletContext } from "react-router";
-import { toast } from "react-toastify";
 
 const Achievements = () => {
     const outletContext = useOutletContext()
     const achievements = outletContext.achievements
-    const unlockAchievement = outletContext.unlockAchievement
 
     return ( 
         <div className="achievements">

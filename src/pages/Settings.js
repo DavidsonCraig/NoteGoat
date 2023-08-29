@@ -1,4 +1,4 @@
-import { Outlet, useOutletContext } from "react-router"
+import { useOutletContext } from "react-router"
 import goat from "../images/goat640.png"
 import { useEffect, useState } from "react"
 

@@ -9,13 +9,17 @@ export default function Main(props) {
   const mutePiano = outletContext.mutePiano
 
     useEffect(() => {
-      anime({
+      const animation = anime({
         targets: '.pianoMenuDecoration',
         translateY: ['25vh', '0vh'],
         duration: 4000,
         loop: true,
         easing: 'linear',
       });
+
+      return (() => {
+        animation.reset()
+      })
     },[])
 
     useEffect(() => {

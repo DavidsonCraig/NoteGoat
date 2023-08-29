@@ -8,8 +8,6 @@ import DifficultySelector from "../components/DifficultySelector"
 import NoteDisplay from "../components/NoteDisplay"
 import Combo from "../components/Combo"
 import BackButton from "../components/BackButton"
-import { Flip, toast } from "react-toastify"
-import anime from "animejs"
 import SightReadAchievements from "../components/SightReadAchievements"
 
 export default function SightRead() {
@@ -24,7 +22,7 @@ export default function SightRead() {
   const [note, setNote] = useState(60)
   const [combo, setCombo] = useState(0)
   const [prevCombo, setPrevCombo] = useState(0)
-  const [showNotes, setshowNotes] = useState(true)
+  const [showNotes, setshowNotes] = useState(false)
   const prevNote = useRef(0);
 
   //Reward sound effect setup
@@ -66,7 +64,6 @@ export default function SightRead() {
         setNote(Math.floor(Math.random() * 59) + 36)
         break
     }
-    setNote(60)
   })
 
   useEffect(() => {

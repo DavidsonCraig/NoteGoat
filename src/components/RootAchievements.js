@@ -1,5 +1,4 @@
 import { useEffect } from "react"
-import { useOutletContext } from "react-router"
 
 const RootAchievements = (props) => {
     const statsCMaj = props.statsCMaj
@@ -56,7 +55,6 @@ const RootAchievements = (props) => {
                 achievementArr.push(firstAchievement + 5 + (i * 6))
             }
         }
-        console.log(achievementArr)
         return achievementArr
     })
 
