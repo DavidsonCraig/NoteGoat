@@ -24,7 +24,6 @@ const Achievements = () => {
                 </div>
             </div>
         </div>
-        
      );
 }
  

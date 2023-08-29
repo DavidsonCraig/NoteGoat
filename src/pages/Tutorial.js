@@ -41,7 +41,6 @@ const Tutorial = () => {
 
     const outletContext = useOutletContext()
     const notesDown = outletContext.notesDown
-    const unlockAchievement = outletContext.unlockAchievement
     const mutePiano = outletContext.mutePiano
 
     const prevNote = useRef(0);
@@ -218,95 +217,4 @@ const Tutorial = () => {
      );
 }
  
-export default Tutorial;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// import { useState } from 'react';
-// import Modal from 'react-modal';
-// // import modalImage from "../images/piano.png"
-
-// const Tutorial = () => {
-//     const [modalIsOpen, setIsOpen] = useState(false);
-
-//     const customStyles = {
-//         content: {
-//             top: '50%',
-//             left: '50%',
-//             right: 'auto',
-//             bottom: 'auto',
-//             marginRight: '-50%',
-//             transform: 'translate(-50%, -50%)',
-//             backgroundColor: "#00182E",
-//             width: "80vw",
-//         },
-//         overlay: {
-//             backgroundColor: "rgba(0, 0, 0, 0)",
-//         },
-//       };
-
-//     Modal.setAppElement('#root');
-
-
-//     function openModal() {
-//         setIsOpen(true);
-//     }
-
-//     function afterOpenModal() {
-//         // references are now sync'd and can be accessed.
-//     }
-
-//     function closeModal() {
-//         setIsOpen(false);
-//     }
-
-//     return ( 
-//         <div className="tutorial" id="tutorial">
-//             <button onClick={openModal}>Open Modal</button>
-
-//         <Modal
-//             isOpen={modalIsOpen}
-//             onAfterOpen={afterOpenModal}
-//             onRequestClose={closeModal}
-//             contentLabel="Example Modal"
-//             className="tutorialModal"
-//             style={customStyle"hidden"         >
-//             <div className="tutorialModalInnerContainer">
-//                 <h1 className="tutorialModalTitle">Test Modal</h1>
-//                 {/* <img src={modalImage} className="pianoMenuDecoration"></img> */}
-//                 <h1 className="tutorialModalText">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi molestiae in maxime sequi. Rem nihil aspernatur voluptatum aliquid perferendis voluptas doloremque tenetur, beatae consequatur. Reprehenderit, ut officiis qui temporibus, nulla repudiandae deleniti cum fugiat eius harum aliquid sint optio eaque alias adipisci. Adipisci, aliquid unde? Vero consequatur qui ut adipisci.</h1>
-//                 <button className="tutorialModalOkButton" onClick={closeModal}>Ok</button>
-//             </div>
-//         </Modal>
-//         </div>
-//      );
-// }
- 
-// export default Tutorial;
+export default Tutorial

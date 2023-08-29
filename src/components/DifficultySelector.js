@@ -13,6 +13,7 @@ const DifficultySelector = (props) => {
     useEffect(() => {
         setDifficulty("0")
     }, [])
+    
     return ( 
         <div className="difficultySelector sightReadOptionContainer">
             <select id="difficultySelector" className="sightReadOption" onChange={handleSelectChange}>

@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 const AllNote = (props) => {
     const accidental = props.accidental
-    const note = props.note
     const noteColor = props.noteColor
     const notePosPx = props.notePosPx
     

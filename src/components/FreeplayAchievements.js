@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { useOutletContext } from "react-router";
 
 const FreeplayAchievements = (props) => {
@@ -7,8 +7,6 @@ const FreeplayAchievements = (props) => {
     const unlockAchievement = outletContext.unlockAchievement
 
     const [noteHistory, setNoteHisory] = useState([0,0,0,0])
-
-    const prevNotesDown = useRef([])
 
     const getNote = ((x) => {
         switch (x % 12) {

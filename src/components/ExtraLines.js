@@ -87,7 +87,6 @@ const ExtraLines = (props) => {
             </g></g>
         </svg>
         </div>
-        
      );
 }
  

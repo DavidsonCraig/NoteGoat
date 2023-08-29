@@ -7,8 +7,6 @@ import lock from "../images/lock.png"
 import achievementsSource from "../text/AchievementsSource";
 import RootAchievements from "../components/RootAchievements";
 
-
-
 export default function RootLayout() {
     //Initialises base synth
     const [notesDown, setNotesDown] = useState({})
@@ -300,7 +298,6 @@ export default function RootLayout() {
     },[])
 
     useEffect(() => {
-         //Requests access to MIDI
          if (navigator.requestMIDIAccess) {
             navigator.requestMIDIAccess().then(MIDIsuccess, MIDIfailure);
         }

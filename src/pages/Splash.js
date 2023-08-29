@@ -23,7 +23,6 @@ export default function Splash() {
     });
   })
 
-
   useEffect(() => {
     setTimeout(handleTitleAnimation, 1000)
     setTimeout(handleStartButtonAnimation, 2500)

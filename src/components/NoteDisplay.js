@@ -38,7 +38,7 @@ const NoteDisplay = (props) => {
       "DFlatMaj": [' C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B','=B'],
       "GFlatMaj": ['=C',' D','=D',' E','=E',' F',' G','=G',' A','=A',' B',' c'],
       "CFlatMaj": ['=C',' D','=D',' E',' F','=F',' G','=G',' A','=A',' B',' c'],
-  }
+    }
 
     const calcAdditionalNoteHeight = ((x) => {
       let tmp = 0
@@ -140,8 +140,7 @@ const NoteDisplay = (props) => {
         easing: 'easeInSine',
       })
     }
-
-
+    
     return ( 
         <div className="noteDisplay">
           <div className="SVGContainer">
