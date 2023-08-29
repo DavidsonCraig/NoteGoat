@@ -32,11 +32,11 @@ export default function Main(props) {
           <img src={piano} className="pianoMenuDecoration"></img>
         </div>
         <div className="menuOptionContainer">
-          <NavLink to="/tutorial" className="menuOption" onClick={(() => {unlockAchievement(1)})}>Tutorial</NavLink>
-          <NavLink to="/sightread" className="menuOption">Arcade</NavLink> 
-          <NavLink to="/freeplay" className="menuOption" onClick={(() => {unlockAchievement(12)})}>Freeplay</NavLink>
-          <NavLink to="/achievements" className="menuOption" onClick={(() => {unlockAchievement(15)})}>Achievements</NavLink>
-          <NavLink to="/settings" className="menuOption" onClick={(() => {unlockAchievement(13)})}>Settings</NavLink>
+          <NavLink to="/NoteGoat/tutorial" className="menuOption" onClick={(() => {unlockAchievement(1)})}>Tutorial</NavLink>
+          <NavLink to="/NoteGoat/sightread" className="menuOption">Arcade</NavLink> 
+          <NavLink to="/NoteGoat/freeplay" className="menuOption" onClick={(() => {unlockAchievement(12)})}>Freeplay</NavLink>
+          <NavLink to="/NoteGoat/achievements" className="menuOption" onClick={(() => {unlockAchievement(15)})}>Achievements</NavLink>
+          <NavLink to="/NoteGoat/settings" className="menuOption" onClick={(() => {unlockAchievement(13)})}>Settings</NavLink>
         </div>
       </div>
     )
