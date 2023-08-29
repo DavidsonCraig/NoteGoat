@@ -21,14 +21,14 @@ import RootLayout from "./layouts/RootLayout";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<RootLayout></RootLayout>}>
+    <Route path="/NoteGoat/" element={<RootLayout></RootLayout>}>
       <Route index element={<Splash></Splash>}></Route>
-      <Route path="main" element={<Main></Main>}></Route>
-      <Route path="sightread" element={<SightRead></SightRead>}></Route>
-      <Route path="settings" element={<Settings></Settings>}></Route>
-      <Route path="achievements" element={<Achievements></Achievements>}></Route>
-      <Route path="tutorial" element={<Tutorial></Tutorial>}></Route>
-      <Route path="freeplay" element={<Freeplay></Freeplay>}></Route>
+      <Route path="/NoteGoat/main" element={<Main></Main>}></Route>
+      <Route path="/NoteGoat/sightread" element={<SightRead></SightRead>}></Route>
+      <Route path="/NoteGoat/settings" element={<Settings></Settings>}></Route>
+      <Route path="/NoteGoat/achievements" element={<Achievements></Achievements>}></Route>
+      <Route path="/NoteGoat/tutorial" element={<Tutorial></Tutorial>}></Route>
+      <Route path="/NoteGoat/freeplay" element={<Freeplay></Freeplay>}></Route>
     </Route>
   )
 )
