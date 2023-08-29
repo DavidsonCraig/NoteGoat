@@ -20,6 +20,7 @@ export default function RootLayout() {
     const [totalIncorrectNotes, setTotalIncorrectNotes] = useState(0)
     const [currency, setCurrency] = useState(0)
     const [midiStatus, setMidiStatus] = useState(null)
+    const [numOfAchievementsUnlocked, setnumOfAchievementsUnlocked] = useState(0)
     const mutePiano = useRef(false)
     const systemMute = useRef(false)
 
@@ -222,6 +223,7 @@ export default function RootLayout() {
         }
         
         if (achievements[x][1] == "locked") {
+            setnumOfAchievementsUnlocked(setnumOfAchievementsUnlocked => setnumOfAchievementsUnlocked + 1)
             const tmp = [...achievements]
             tmp[x][1] = "unlocked"
             setAchievements(tmp)
@@ -422,6 +424,7 @@ export default function RootLayout() {
             statsCFlatMaj={statsCFlatMaj}
             totalCorrectNotes={totalCorrectNotes}
             unlockAchievement={unlockAchievement}
+            numOfAchievementsUnlocked={numOfAchievementsUnlocked}
             ></RootAchievements>
         </div>
     )

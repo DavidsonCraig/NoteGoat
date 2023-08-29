@@ -20,6 +20,7 @@ const RootAchievements = (props) => {
 
     const totalCorrectNotes = props.totalCorrectNotes
     const unlockAchievement = props.unlockAchievement
+    const numOfAchievementsUnlocked = props.numOfAchievementsUnlocked
 
     //Stats for each key signature
     //Three blocks of four (Due to shallow comparison of react)
@@ -181,7 +182,85 @@ const RootAchievements = (props) => {
             unlockAchievement(x[i])
         }
     }, [statsCFlatMaj])
-    
+
+    //Check number of achievements unlocked
+    useEffect(() => {
+        if (numOfAchievementsUnlocked > 80) {
+            unlockAchievement(402)
+        }
+
+        if (numOfAchievementsUnlocked > 160) {
+            unlockAchievement(403)
+        }
+
+        if (numOfAchievementsUnlocked > 242) {
+            unlockAchievement(404)
+        }
+
+        if (numOfAchievementsUnlocked > 323) {
+            unlockAchievement(405)
+        }
+
+        if (numOfAchievementsUnlocked >= 405) {
+            unlockAchievement(406)
+        }
+    }, [numOfAchievementsUnlocked])
+
+    useEffect(() => {
+        if (totalCorrectNotes >= 10) {
+            unlockAchievement(25)
+        }
+
+        if (totalCorrectNotes >= 10) {
+            unlockAchievement(25)
+        }
+
+        if (totalCorrectNotes >= 25) {
+            unlockAchievement(26)
+        }
+
+        if (totalCorrectNotes >= 50) {
+            unlockAchievement(27)
+        }
+
+        if (totalCorrectNotes >= 100) {
+            unlockAchievement(28)
+        }
+
+        if (totalCorrectNotes >= 250) {
+            unlockAchievement(29)
+        }
+
+        if (totalCorrectNotes >= 500) {
+            unlockAchievement(30)
+        }
+
+        if (totalCorrectNotes >= 1000) {
+            unlockAchievement(31)
+        }
+
+        if (totalCorrectNotes >= 314) {
+            unlockAchievement(32)
+        }
+
+        if (totalCorrectNotes >= 271) {
+            unlockAchievement(33)
+        }
+
+        if (totalCorrectNotes >= 42) {
+            unlockAchievement(34)
+        }
+
+        if (totalCorrectNotes >= 247) {
+            unlockAchievement(35)
+        }
+
+        if (totalCorrectNotes >= 451) {
+            unlockAchievement(36)
+        }
+    }, [totalCorrectNotes])
+
+
     return null;
 }
  
