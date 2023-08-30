@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router"
 import goat from "../images/goat640.png"
 import { useEffect, useState } from "react"
+import BackButton from "../components/BackButton"
 
 
 export default function Settings() {
@@ -49,6 +50,7 @@ export default function Settings() {
 
     return (
       <div className="settings">
+        <BackButton></BackButton>
         <div className="settingsInnerContainer">
           <h1 className="settingsTitle">Settings</h1>
           <h1 className="midiStatus">Midi device: {midiStatus}</h1>
