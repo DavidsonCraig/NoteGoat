@@ -45,7 +45,11 @@ const NoteDisplay = (props) => {
       let noteSpace = 13.5
       switch(x) {
         case 'b':
-          tmp = 1
+          if (note === 60) {
+            tmp = 9.5
+          } else {
+            tmp = 1
+          }
           break
         case 'C':
           tmp = 0
