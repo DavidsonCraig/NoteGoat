@@ -206,7 +206,7 @@ const Tutorial = () => {
             <div className="tutorialModalOuterContainer" style={modalStyle}>
                 <h1 className="tutorialModalTitle" onClick={pickNote}>{tutorialTitle}</h1>
                 <div className="tutorialModalInnerContainer">
-                    <img src={image} className="tutorialImage" onClick={advanceTutorial}></img>
+                    <img src={image} className="tutorialImage"></img>
                     <div className="tutorialTextContainer">
                         <h1 className="tutorialModalText">{tutorialBodyText}</h1>
                     </div>

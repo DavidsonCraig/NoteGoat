@@ -13,7 +13,7 @@ const achievementsSource = [
     ["011","locked","I am become deaf","Mute the game"],
     ["012","locked","Freestyle","Enter the freeplay mode"],
     ["013","locked","Curious","Enter the settings page"],
-    ["014","locked","No cheese for you","Click the piano helper"],
+    ["014","locked","No cheese for you","Click the moving piano"],
     ["015","locked","Trophy collection","Enter the achievements page"],
     ["016","locked","I'm bad","Play B,A,D in that order in freeplay"],
     ["017","locked","Sleepy","Play B,E,D in that order in freeplay"],

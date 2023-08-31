@@ -28,7 +28,7 @@ export default function Main(props) {
 
     return (
       <div className="main">
-        <div className="pianoMenuDecorationContainer">
+        <div className="pianoMenuDecorationContainer" onClick={(() => {unlockAchievement(14)})}>
           <img src={piano} className="pianoMenuDecoration"></img>
         </div>
         <div className="menuOptionContainer">

@@ -12,7 +12,6 @@ const PianoHelper = (props) => {
 
     const outletContext = useOutletContext()
     const notesDown = outletContext.notesDown
-    const unlockAchievement = outletContext.unlockAchievement
     const noteOn = outletContext.noteOn
     const noteOff = outletContext.noteOff
 
@@ -40,7 +39,7 @@ const PianoHelper = (props) => {
     }, [combo,highlightedNotes,notesDown])
 
     return ( 
-        <div className="pianoHelperContainer" onClick={(() => {unlockAchievement(14)})}>
+        <div className="pianoHelperContainer">
             <div className="pianoHelperInnerContainer">
                 <div className="whiteNotes">
                     {/* Octave 2 */}
