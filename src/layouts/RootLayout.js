@@ -21,6 +21,7 @@ export default function RootLayout() {
     const [numOfAchievementsUnlocked, setnumOfAchievementsUnlocked] = useState(0)
     const mutePiano = useRef(false)
     const systemMute = useRef(false)
+    const wakeLock = useRef(null)
 
 
     ondragstart = (event) => {
@@ -376,6 +377,22 @@ export default function RootLayout() {
         const totalIncorrect = JSON.stringify(totalIncorrectNotes)
         localStorage.setItem("totalIncorrectNotes", totalIncorrect)
     })
+
+    //Wake lock
+    const getWakeLock = ( async() => {
+        if (wakeLock.current === null && "wakeLock" in navigator) {
+            try {
+                wakeLock.current = await navigator.wakeLock.request("screen")
+                console.log("WakeLock acquired")
+            } catch {
+                console.log("Failed to acquire WakeLock")
+            }
+        }
+    })
+
+    useEffect(() => {
+        document.addEventListener("click", getWakeLock)
+    }, [])
 
     return (
         <div className="rootLayout">

@@ -2,11 +2,12 @@ import {
    RouterProvider,
    Route,
    createBrowserRouter,
-   createRoutesFromElements
+   createRoutesFromElements,
+   Navigate
   } from "react-router-dom";
 
 //pages
-import SightRead from "./pages/SightRead";
+import SightRead from "./pages/Sightread";
 import Splash from "./pages/Splash";
 import Main from "./pages/Main";
 import Settings from "./pages/Settings";
@@ -29,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="/NoteGoat/achievements" element={<Achievements></Achievements>}></Route>
       <Route path="/NoteGoat/tutorial" element={<Tutorial></Tutorial>}></Route>
       <Route path="/NoteGoat/freeplay" element={<Freeplay></Freeplay>}></Route>
+      <Route path="*" element={<Navigate to="/NoteGoat" replace />} />
     </Route>
   )
 )

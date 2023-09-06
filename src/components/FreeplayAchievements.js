@@ -63,7 +63,7 @@ const FreeplayAchievements = (props) => {
             unlockAchievement(20)
         }
 
-        if (x[1] == "D" && x[2] == "A" && x[3] == "D") {
+        if (x[1] == "A" && x[2] == "C" && x[3] == "E") {
             unlockAchievement(21)
         }
 

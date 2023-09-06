@@ -20,7 +20,7 @@ const achievementsSource = [
     ["018","locked","TAXI!","Play C,A,B in that order in freeplay"],
     ["019","locked","Busy bee","Play B,E,E in that order in freeplay"],
     ["020","locked","...really?","Play D,A,B in that order"],
-    ["021","locked","Proud of you","Play D,A,D in that order"],
+    ["021","locked","Ace of spades","Play A,C,E in that order"],
     ["022","locked","Necromancer","Play D,E,A,D in that order"],
     ["023","locked","FBI OPEN UP","Play F,E,D in that order"],
     ["024","locked","Espresso","Play C,A,F,E in that order"],
