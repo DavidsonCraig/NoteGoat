@@ -209,10 +209,6 @@ const RootAchievements = (props) => {
             unlockAchievement(25)
         }
 
-        if (totalCorrectNotes >= 10) {
-            unlockAchievement(25)
-        }
-
         if (totalCorrectNotes >= 25) {
             unlockAchievement(26)
         }
