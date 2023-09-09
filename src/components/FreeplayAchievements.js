@@ -43,6 +43,7 @@ const FreeplayAchievements = (props) => {
 
     useEffect(() => {
         let x = noteHistory
+
         if (x[1] == "B" && x[2] == "A" && x[3] == "D") {
             unlockAchievement(16)
         }

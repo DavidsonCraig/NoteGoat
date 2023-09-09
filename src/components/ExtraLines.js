@@ -76,14 +76,14 @@ const ExtraLines = (props) => {
             >            
             <g fill="#00274a" stroke="#00274a">
             <g strokeWidth="1.5">
-            <path opacity={extraLineTreble5} d="m-48.837 10.419h150"/>
-            <path opacity={extraLineTreble4} d="m-48.807 41.45h150"/>
-            <path opacity={extraLineTreble3} d="m-48.777 72.481h150"/>
-            <path opacity={extraLineTreble2} d="m-48.734 103.51h150"/>
-            <path opacity={extraLineTreble1} d="m-48.809 134.54h150"/>
-            <path opacity={extraLineBass1} d="m-48.139 640.15h150"/>
-            <path opacity={extraLineBass2} d="m-48.109 671.18h150"/>
-            <path opacity={extraLineMiddleC} d="m-48.109 319h150"/>
+            <path id="extraLineTreble5" opacity={extraLineTreble5} d="m-48.837 10.419h150"/>
+            <path id="extraLineTreble4" opacity={extraLineTreble4} d="m-48.807 41.45h150"/>
+            <path id="extraLineTreble3" opacity={extraLineTreble3} d="m-48.777 72.481h150"/>
+            <path id="extraLineTreble2" opacity={extraLineTreble2} d="m-48.734 103.51h150"/>
+            <path id="extraLineTreble1" opacity={extraLineTreble1} d="m-48.809 134.54h150"/>
+            <path id="extraLineBass1" opacity={extraLineBass1} d="m-48.139 640.15h150"/>
+            <path id="extraLineBass2" opacity={extraLineBass2} d="m-48.109 671.18h150"/>
+            <path id="extraLineMiddleC" opacity={extraLineMiddleC} d="m-48.109 319h150"/>
             </g></g>
         </svg>
         </div>
