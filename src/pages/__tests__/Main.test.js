@@ -3,11 +3,12 @@ import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 import '@testing-library/jest-dom/extend-expect';
 import * as rr from "react-router"
 import { BrowserRouter } from "react-router-dom";
+import mockImageStore from "../__mocks__/MockImageStore";
 
 describe("Should render menu options", () => {
     it("should navigate to tutorial when tutorial option is pressed", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>
@@ -22,7 +23,7 @@ describe("Should render menu options", () => {
 
     it("should navigate to sightread when sightread option is pressed", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>
@@ -37,7 +38,7 @@ describe("Should render menu options", () => {
 
     it("should navigate to freeplay when freeplay option is pressed", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>
@@ -52,7 +53,7 @@ describe("Should render menu options", () => {
 
     it("should navigate to achievements when achievements option is pressed", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>
@@ -67,7 +68,7 @@ describe("Should render menu options", () => {
 
     it("should navigate to settings when settings option is pressed", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>
@@ -83,7 +84,7 @@ describe("Should render menu options", () => {
 
 it("should mute piano on first render", async () => {
     const contextSpy = jest.spyOn(rr, "useOutletContext")
-    let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+    let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
     contextSpy.mockReturnValue(mockdata)
     render(
         <rr.MemoryRouter>
@@ -97,7 +98,7 @@ it("should mute piano on first render", async () => {
 describe("Should unlock achievements through navigation", () => {
     it("should unlock an achievement when navigating to the tutorial", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>
@@ -112,7 +113,7 @@ describe("Should unlock achievements through navigation", () => {
 
     it("should unlock an achievement when navigating to freeplay", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>
@@ -127,7 +128,7 @@ describe("Should unlock achievements through navigation", () => {
 
     it("should unlock an achievement when navigating to achievements", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>
@@ -142,7 +143,7 @@ describe("Should unlock achievements through navigation", () => {
 
     it("should unlock an achievement when navigating to the settings", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
-        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn()}
+        let mockdata = {mutePiano: jest.fn(), unlockAchievement: jest.fn(), imageStore: mockImageStore}
         contextSpy.mockReturnValue(mockdata)
         render(
             <BrowserRouter>

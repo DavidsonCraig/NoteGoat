@@ -39,7 +39,7 @@ describe("noteHighlighting", () => {
         contextSpy.mockRestore()
     })
 
-    it("Note should be highlighted if combo is more than 0 and showNotes is true", async () => {
+    it("Note should not be highlighted if combo is more than 0 and showNotes is false", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {notesDown: {}, noteOn: jest.fn(), noteOff: jest.fn()}
         contextSpy.mockReturnValue(mockdata)

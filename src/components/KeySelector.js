@@ -13,6 +13,7 @@ const KeySelector = (props) => {
     useEffect(() => {
         setKeySignature("CMaj")
     }, [])
+    
     return ( 
         <div className="keySelectorContainer sightReadOptionContainer">
             <select name="Key" id="keySelector" className="sightReadOption" onChange={handleSelectChange}>

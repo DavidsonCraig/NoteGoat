@@ -6,10 +6,11 @@ import { BrowserRouter } from "react-router-dom";
 import tutorialText from "../../text/TutorialText";
 import tutorialChallengesText from "../../text/TutorialChallengesText";
 import tutorialTitles from "../../text/TutorialTitles";
+import mockImageStore from "../__mocks__/MockImageStore";
 
 it("should unmute piano on first render", async () => {
     const contextSpy = jest.spyOn(rr, "useOutletContext")
-    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj"}
+    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj", imageStore: mockImageStore}
     contextSpy.mockReturnValue(mockdata)
     render(
         <BrowserRouter>
@@ -24,7 +25,7 @@ it("should unmute piano on first render", async () => {
 
 it("Pressing ok should close modal", async () => {
     const contextSpy = jest.spyOn(rr, "useOutletContext")
-    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj"}
+    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj", imageStore: mockImageStore}
     contextSpy.mockReturnValue(mockdata)
     const {container} = render(
         <BrowserRouter>
@@ -41,7 +42,7 @@ it("Pressing ok should close modal", async () => {
 
 it("Pressing help should open modal", async () => {
     const contextSpy = jest.spyOn(rr, "useOutletContext")
-    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj"}
+    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj", imageStore: mockImageStore}
     contextSpy.mockReturnValue(mockdata)
     const {container} = render(
         <BrowserRouter>
@@ -62,7 +63,7 @@ it("Pressing help should open modal", async () => {
 
 it("should display correct Title in modal", async () => {
     const contextSpy = jest.spyOn(rr, "useOutletContext")
-    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj"}
+    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj", imageStore: mockImageStore}
     contextSpy.mockReturnValue(mockdata)
     render(
         <BrowserRouter>
@@ -76,7 +77,7 @@ it("should display correct Title in modal", async () => {
 
 it("should display correct challenge text", async () => {
     const contextSpy = jest.spyOn(rr, "useOutletContext")
-    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj"}
+    let mockdata = {mutePiano: jest.fn(),notesDown: {}, keySignature: "CMaj", imageStore: mockImageStore}
     contextSpy.mockReturnValue(mockdata)
     render(
         <BrowserRouter>

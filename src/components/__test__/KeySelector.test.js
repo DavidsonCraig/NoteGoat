@@ -35,7 +35,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to GMaj", async () => {
+    it("should be able to change the key signature to GMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -52,7 +52,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to DMaj", async () => {
+    it("should be able to change the key signature to DMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -69,7 +69,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to AMaj", async () => {
+    it("should be able to change the key signature to AMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -86,7 +86,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to EMaj", async () => {
+    it("should be able to change the key signature to EMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -103,7 +103,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to BMaj", async () => {
+    it("should be able to change the key signature to BMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -120,7 +120,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to FSharpMaj", async () => {
+    it("should be able to change the key signature to FSharpMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -137,7 +137,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to CSharpMaj", async () => {
+    it("should be able to change the key signature to CSharpMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -154,7 +154,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to FMaj", async () => {
+    it("should be able to change the key signature to FMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -171,7 +171,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to BFlatMaj", async () => {
+    it("should be able to change the key signature to BFlatMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -188,7 +188,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to EFlatMaj", async () => {
+    it("should be able to change the key signature to EFlatMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -205,7 +205,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to AFlatMaj", async () => {
+    it("should be able to change the key signature to AFlatMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -222,7 +222,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to DFlatMaj", async () => {
+    it("should be able to change the key signature to DFlatMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -239,7 +239,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to GFlatMaj", async () => {
+    it("should be able to change the key signature to GFlatMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)
@@ -256,7 +256,7 @@ describe("Should be able to change difficulty which changes option and triggers 
         contextSpy.mockRestore()
     })
 
-    it("should have be able to change to CFlatMaj", async () => {
+    it("should be able to change the key signature to CFlatMaj", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setKeySignature: jest.fn()}
         contextSpy.mockReturnValue(mockdata)

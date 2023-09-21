@@ -539,7 +539,7 @@ describe("Should unlock achievements based on combo, difficulty and key Signatur
 })
 
 
-it("Should unlock achievements based of number of achievments already unlocked", async () => {
+it("Should unlock achievements based of number of achievements already unlocked", async () => {
     const unlockAchievement = jest.fn()
     for (let i = 0; i < 4; i++) {
         let fifthOfAchievements = 81

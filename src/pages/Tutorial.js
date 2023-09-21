@@ -1,23 +1,5 @@
 import { useRef, useState } from "react";
 
-import tutorial_1 from "../images/tutorial_1.png"
-import tutorial_2 from "../images/tutorial_2.png"
-import tutorial_3 from "../images/tutorial_3.png"
-import tutorial_4 from "../images/tutorial_4.png"
-import tutorial_5 from "../images/tutorial_5.png"
-import tutorial_6 from "../images/tutorial_6.png"
-import tutorial_7 from "../images/tutorial_7.png"
-import tutorial_8 from "../images/tutorial_8.png"
-import tutorial_9 from "../images/tutorial_9.png"
-import tutorial_10 from "../images/tutorial_10.png"
-import tutorial_11 from "../images/tutorial_11.png"
-import tutorial_12 from "../images/tutorial_12.png"
-import tutorial_13 from "../images/tutorial_13.png"
-import tutorial_14 from "../images/tutorial_14.png"
-import tutorial_15 from "../images/tutorial_15.png"
-import tutorial_16 from "../images/tutorial_16.png"
-import tutorial_17 from "../images/tutorial_17.png"
-
 import BackButton from "../components/BackButton"
 import NoteDisplay from "../components/NoteDisplay";
 import PianoHelper from "../components/PianoHelper"
@@ -29,6 +11,13 @@ import { useOutletContext } from "react-router";
 import TutorialAchievements from "../components/TutorialAchievements";
 
 const Tutorial = () => {
+    const outletContext = useOutletContext()
+    const notesDown = outletContext.notesDown
+    const mutePiano = outletContext.mutePiano
+    const imageStore = outletContext.imageStore
+    const tutorial_1 = imageStore.tutorial_1
+    
+    const [image, setImage] = useState(tutorial_1)
     const [note, setNote] = useState(60)
     const [combo, setCombo] = useState(0)
     const [tutorialStep, setTutorialStep] = useState(0)
@@ -36,12 +25,7 @@ const Tutorial = () => {
     const [tutorialTitle, setTutororialTitle] = useState(tutorialTitles[tutorialStep])
     const [tutorialBodyText, setTutorialBodyText] = useState(tutorialText[tutorialStep])
     const [tutorialChallengeText, setTutorialChallengeText] = useState(tutorialChallengesText[tutorialStep])
-    const [image, setImage] = useState(tutorial_1)
     const [showNotes, setshowNotes] = useState(false)
-
-    const outletContext = useOutletContext()
-    const notesDown = outletContext.notesDown
-    const mutePiano = outletContext.mutePiano
 
     const prevNote = useRef(0);
 
@@ -81,74 +65,70 @@ const Tutorial = () => {
                 break
             case 1:
             case 2:
-                setImage(tutorial_2)
+                setImage(imageStore.tutorial_2)
                 break
             case 3:
             case 4:
-                setImage(tutorial_3)
+                setImage(imageStore.tutorial_3)
                 break
             case 5:
             case 6:
-                setImage(tutorial_4)
+                setImage(imageStore.tutorial_4)
                 break
             case 7:
             case 8:
-                setImage(tutorial_5)
+                setImage(imageStore.tutorial_5)
                 break
             case 9:
             case 10:
-                setImage(tutorial_6)
+                setImage(imageStore.tutorial_6)
                 break
             case 11:
             case 12:
-                setImage(tutorial_7)
+                setImage(imageStore.tutorial_7)
                 break
             case 13:
             case 14:
-                setImage(tutorial_8)
+                setImage(imageStore.tutorial_8)
                 break
             case 15:
             case 16:
-                setImage(tutorial_9)
+                setImage(imageStore.tutorial_9)
                 break
             case 17:
             case 18:
-                setImage(tutorial_10)
+                setImage(imageStore.tutorial_10)
                 break
             case 19:
             case 20:
-                setImage(tutorial_11)
+                setImage(imageStore.tutorial_11)
                 break
             case 21:
             case 22:
-                setImage(tutorial_12)
+                setImage(imageStore.tutorial_12)
                 break
             case 23:
-                setImage(tutorial_14)
+                setImage(imageStore.tutorial_14)
                 break
             case 24:
-                setImage(tutorial_13)
+                setImage(imageStore.tutorial_13)
                 break
             case 25:
-                setImage(tutorial_14)
+                setImage(imageStore.tutorial_14)
                 break
             case 26:
-                setImage(tutorial_15)
+                setImage(imageStore.tutorial_15)
                 break
             case 27:
-                setImage(tutorial_16)
+                setImage(imageStore.tutorial_16)
                 break
             case 28:
-                setImage(tutorial_17)
+                setImage(imageStore.tutorial_17)
                 break
             case 29:
-                setImage(tutorial_14)
+                setImage(imageStore.tutorial_14)
                 break
         }
-    })
-
-    const tutorialUnlockAchievements = (() => {
-
     })
 
     useEffect(() => {
@@ -162,7 +142,6 @@ const Tutorial = () => {
     }, [tutorialStep])
 
     const advanceTutorial = (() => {
-        tutorialUnlockAchievements()
         setTutorialStep(tutorialStep => tutorialStep + 1)
     })
 

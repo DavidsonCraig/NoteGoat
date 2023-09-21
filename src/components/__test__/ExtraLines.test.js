@@ -28,7 +28,7 @@ it("Should render all extra lines", async () => {
 })
 
 describe("Should render correct lines at specific notePosPx", () => {
-    it("Should be no visable lines at 20", async () => {
+    it("Should render no visable lines at 20 notePosPx", async () => {
         const { container } = render (
             <ExtraLines notePosPx={20}></ExtraLines>
         )
@@ -51,7 +51,7 @@ describe("Should render correct lines at specific notePosPx", () => {
         expect(extraLineMiddleC.getAttribute("opacity")).toBe("0")
     })
 
-    it("Should be middle C line at notePosPx of 16.5", async () => {
+    it("should render the middle C line at notePosPx of 16.5", async () => {
         const { container } = render (
             <ExtraLines notePosPx={16.5}></ExtraLines>
         )
@@ -74,7 +74,7 @@ describe("Should render correct lines at specific notePosPx", () => {
         expect(extraLineMiddleC.getAttribute("opacity")).toBe("1")
     })
 
-    it("Should be single treble line at -146", async () => {
+    it("should render a single treble line at notePosPx of -146", async () => {
         const { container } = render (
             <ExtraLines notePosPx={-146}></ExtraLines>
         )
@@ -97,7 +97,7 @@ describe("Should render correct lines at specific notePosPx", () => {
         expect(extraLineMiddleC.getAttribute("opacity")).toBe("0")
     })
 
-    it("Should be double treble line at -173", async () => {
+    it("should render double treble line at notePosPx of -173", async () => {
         const { container } = render (
             <ExtraLines notePosPx={-173}></ExtraLines>
         )
@@ -120,7 +120,7 @@ describe("Should render correct lines at specific notePosPx", () => {
         expect(extraLineMiddleC.getAttribute("opacity")).toBe("0")
     })
 
-    it("Should be three treble lines at -200", async () => {
+    it("should render three treble lines at notePosPx of -200", async () => {
         const { container } = render (
             <ExtraLines notePosPx={-200}></ExtraLines>
         )
@@ -143,7 +143,7 @@ describe("Should render correct lines at specific notePosPx", () => {
         expect(extraLineMiddleC.getAttribute("opacity")).toBe("0")
     })
 
-    it("Should be four treble lines at -227", async () => {
+    it("should render four treble lines at notePosPx of -227", async () => {
         const { container } = render (
             <ExtraLines notePosPx={-227}></ExtraLines>
         )
@@ -166,7 +166,7 @@ describe("Should render correct lines at specific notePosPx", () => {
         expect(extraLineMiddleC.getAttribute("opacity")).toBe("0")
     })
 
-    it("Should be five treble lines at -254", async () => {
+    it("should render five treble lines at notePosPx of -254", async () => {
         const { container } = render (
             <ExtraLines notePosPx={-254}></ExtraLines>
         )
@@ -189,7 +189,7 @@ describe("Should render correct lines at specific notePosPx", () => {
         expect(extraLineMiddleC.getAttribute("opacity")).toBe("0")
     })
 
-    it("Should be single bass line at 293", async () => {
+    it("should render single bass line at notePosPx of 293", async () => {
         const { container } = render (
             <ExtraLines notePosPx={293}></ExtraLines>
         )
@@ -212,7 +212,7 @@ describe("Should render correct lines at specific notePosPx", () => {
         expect(extraLineMiddleC.getAttribute("opacity")).toBe("0")
     })
 
-    it("Should be souble bass line at 320", async () => {
+    it("should render souble bass line at notePosPx of 320", async () => {
         const { container } = render (
             <ExtraLines notePosPx={320}></ExtraLines>
         )

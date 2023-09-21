@@ -30,7 +30,7 @@ it("Should unlock achievements when playing first correct notes", async () => {
     contextSpy.mockRestore()
 })
 
-it("Should not unlock achievements when at correct tutotorial step with no combo", async () => {
+it("Should not unlock achievements when at correct tutorial step with no combo", async () => {
     const contextSpy = jest.spyOn(rr, "useOutletContext")
     let mockdata = {unlockAchievement: jest.fn()}
     contextSpy.mockReturnValue(mockdata)

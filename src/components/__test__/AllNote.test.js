@@ -20,7 +20,7 @@ describe("Should render correct note components", () => {
         expect(x).toBeInTheDocument()
     })
     
-    it("should display noteBody and be visable", async () => {
+    it("should display noteBody and be visible", async () => {
         const { container } = render (
             <AllNote></AllNote>
         )
@@ -76,7 +76,7 @@ describe("Should render correct accidentals given props", () => {
         expect(natural.getAttribute("opacity")).toBe("0")
     })
 
-    it("should display sharp given sharp prop", async () => {
+    it("should display a sharp given sharp prop", async () => {
         const { container } = render (
             <AllNote accidental={"^"}></AllNote>
         )
@@ -89,7 +89,7 @@ describe("Should render correct accidentals given props", () => {
         expect(natural.getAttribute("opacity")).toBe("0")
     })
 
-    it("should display flat given flat prop", async () => {
+    it("should display a flat given flat prop", async () => {
         const { container } = render (
             <AllNote accidental={"_"}></AllNote>
         )
@@ -185,7 +185,7 @@ describe("Should render the correct note stem given note x position", () => {
 })
 
 describe("Should render correct note color given the noteColor prop", () => {
-    it("should note components as black if given black color prop", async () => {
+    it("It should render the note as black given a black color prop", async () => {
         const { container } = render (
             <AllNote noteColor={"black"}></AllNote>
         )

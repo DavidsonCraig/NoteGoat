@@ -8,9 +8,15 @@ const Timer = (props) => {
 
     const timeoutRef = useRef(null)
     const animeRef = useRef(null)
+
+    const resetWidth = (() => {
+        const timerElement = document.querySelector(".timeRemaining")
+        timerElement.style.width = "100%"
+    })
     
     useEffect(() => {
         clearTimeout(timeoutRef.current)
+        resetWidth()
         if (animeRef.current) {
             animeRef.current.reset();
         }
@@ -19,10 +25,10 @@ const Timer = (props) => {
             timeoutRef.current = setTimeout(() => {
                 resetCombo()
             }, comboTime - (Math.min((combo * 100), 2500)))
-
+            
             animeRef.current = anime ({
                 targets: ".timeRemaining",
-                width: 0.1,
+                width: "0%",
                 easing: "linear",
                 duration: comboTime - (Math.min((combo * 100), 2500)),
             })
@@ -31,8 +37,9 @@ const Timer = (props) => {
         return (() => {
             clearTimeout(timeoutRef.current)
             if (animeRef.current) {
-                animeRef.current.reset();
+                animeRef.current.reset()
             }
+            
         })
     },[combo])
 

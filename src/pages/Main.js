@@ -1,5 +1,4 @@
 import { NavLink, useOutletContext } from "react-router-dom";
-import piano from "../images/piano.png"
 import { useEffect } from "react";
 import anime from "animejs";
 
@@ -7,6 +6,8 @@ export default function Main(props) {
   const outletContext = useOutletContext()
   const unlockAchievement = outletContext.unlockAchievement
   const mutePiano = outletContext.mutePiano
+  const imageStore = outletContext.imageStore
+  const piano = imageStore.piano
 
     useEffect(() => {
       const animation = anime({

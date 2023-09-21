@@ -17,7 +17,7 @@ it("should have novice difficulty preselected", async () => {
 })
 
 describe("Should be able to change difficulty which changes option and triggers setDifficulty()", () => {
-    it("should have be able to change to Novice difficulty", async () => {
+    it("should be able to change to Novice difficulty", async () => {
         const contextSpy = jest.spyOn(rr, "useOutletContext")
         let mockdata = {setDifficulty: jest.fn()}
         contextSpy.mockReturnValue(mockdata)

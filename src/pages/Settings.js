@@ -1,5 +1,4 @@
 import { useOutletContext } from "react-router"
-import goat from "../images/goat640.png"
 import { useEffect, useState } from "react"
 import BackButton from "../components/BackButton"
 
@@ -56,7 +55,6 @@ export default function Settings() {
           <h1 className="midiStatus">Midi device: {midiStatus}</h1>
           <button className="muteButton" onClick={handleMuteButton}>{muteButtonText}</button>
           <button className="resetProgess" onClick={handleResetProgress}>Reset all progress</button>
-          <img className="goat" src={goat}></img>
         </div>
       </div>
     )

@@ -35,7 +35,7 @@ it("should change current combo from combo prop", async () => {
     contextSpy.mockRestore()
 })
 
-it("should change current combo from combo prop", async () => {
+it("should change previous combo from combo prop", async () => {
     const contextSpy = jest.spyOn(rr, "useOutletContext")
     let mockdata = {highScoreFacade: 5}
     contextSpy.mockReturnValue(mockdata)

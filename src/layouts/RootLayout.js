@@ -3,9 +3,9 @@ import { Outlet } from "react-router"
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import * as Tone from "tone"
-import lock from "../images/lock.png"
 import achievementsSource from "../text/AchievementsSource";
 import RootAchievements from "../components/RootAchievements";
+import ImageStore from "../components/ImageStore";
 
 export default function RootLayout() {
     //Initialises base synth
@@ -16,21 +16,12 @@ export default function RootLayout() {
     const [keySignature, setKeySignature] = useState("CMaj")
     const [totalCorrectNotes, setTotalCorrectNotes] = useState(0)
     const [totalIncorrectNotes, setTotalIncorrectNotes] = useState(0)
-    const [currency, setCurrency] = useState(0)
     const [midiStatus, setMidiStatus] = useState(null)
     const [numOfAchievementsUnlocked, setnumOfAchievementsUnlocked] = useState(0)
+    const [imageStore, setImageStore] = useState({})
     const mutePiano = useRef(false)
     const systemMute = useRef(false)
     const wakeLock = useRef(null)
-
-
-    ondragstart = (event) => {
-        event.preventDefault()
-    }
-    
-    const earnCurrency = ((x) => {
-        setCurrency(currency => currency + x)
-    })
 
     const [achievements, setAchievements] = useState(JSON.parse(localStorage.getItem("achievements")) || achievementsSource)
 
@@ -65,54 +56,38 @@ export default function RootLayout() {
             //chromatic
             case "CMaj":
                 return statsCMaj
-                break
             //sharps
             case "GMaj":
                 return statsGMaj
-                break
             case "DMaj":
                 return statsDMaj
-                break
             case "AMaj":
                 return statsAMaj
-                break
             case "EMaj":
                 return statsEMaj
-                break
             case "BMaj":
                 return statsBMaj
-                break
             case "FSharpMaj":
                 return statsFSharpMaj
-                break
             case "CSharpMaj":
                 return statsCSharpMaj
-                break
             //Flats
             case "FMaj":
                 return statsFMaj
-                break
             case "BFlatMaj":
                 return statsBFlatMaj
-                break
             case "EFlatMaj":
                 return statsEFlatMaj
-                break
             case "AFlatMaj":
                 return statsAFlatMaj
-                break
             case "DFlatMaj":
                 return statsDFlatMaj
-                break
             case "GFlatMaj":
                 return statsGFlatMaj
-                break
             case "CFlatMaj":
                 return statsCFlatMaj
-                break
             default:
                 return statsCMaj
-                break
         }
     })
 
@@ -159,9 +134,6 @@ export default function RootLayout() {
                 break
             case "DFlatMaj":
                 setStatsDFlatMaj(x)
-                break
-            case "GFlatMaj":
-                setStatsGFlatMaj(x)
                 break
             case "GFlatMaj":
                 setStatsGFlatMaj(x)
@@ -215,6 +187,7 @@ export default function RootLayout() {
         statsCFlatMaj,
     ])
 
+    //Achievements
     const saveAchievements = ((x) => {
         const tmp = JSON.stringify(x)
         localStorage.setItem(`achievements`, tmp)
@@ -246,12 +219,13 @@ export default function RootLayout() {
                    draggable: false,
                    progress: undefined,
                    style: { background: '#4ec091ff', color: 'white'},
-                   icon: ({theme, type}) =>  <img src={lock} className="lock"/>
+                   icon: ({theme, type}) =>  <img src={imageStore.lock} className="lock"/>
                    });
         }
         
     })
 
+    //Synth instantiation
     const synth = useMemo(() => {
         Tone.start();
         console.log("Tone.js start")
@@ -298,13 +272,13 @@ export default function RootLayout() {
         return pianoSynth
     },[])
 
+    ///////////////Midi Setup Functions
     useEffect(() => {
          if (navigator.requestMIDIAccess) {
             navigator.requestMIDIAccess().then(MIDIsuccess, MIDIfailure);
         }
     },[])
 
-    ///////////////Midi Setup Functions
     const MIDIfailure = (() => {
         console.log("Failed to connect MIDI")
     })
@@ -394,6 +368,10 @@ export default function RootLayout() {
         document.addEventListener("click", getWakeLock)
     }, [])
 
+    ondragstart = (event) => {
+        event.preventDefault()
+    }
+
     return (
         <div className="rootLayout">
             <Outlet context={{
@@ -412,6 +390,7 @@ export default function RootLayout() {
                 systemMute: systemMute,
                 noteOn: noteOn,
                 noteOff: noteOff,
+                imageStore: imageStore,
                 }}></Outlet>
             <ToastContainer
                 position="bottom-left"
@@ -445,9 +424,7 @@ export default function RootLayout() {
             unlockAchievement={unlockAchievement}
             numOfAchievementsUnlocked={numOfAchievementsUnlocked}
             ></RootAchievements>
+            <ImageStore setImageStore={setImageStore}></ImageStore>
         </div>
     )
 }
-
-//Notes
-//Using a useState variable within the midi setup leads to a stale closure of values, as a way round this I have made a useRef which updates whenever the useState does. I then use the useRef variable within the midi code to prevent the stale closure. May lead to performance issue due to overhead

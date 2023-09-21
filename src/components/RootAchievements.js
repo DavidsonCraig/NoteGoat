@@ -204,6 +204,7 @@ const RootAchievements = (props) => {
         }
     }, [numOfAchievementsUnlocked])
 
+    //Check total correct notes
     useEffect(() => {
         if (totalCorrectNotes >= 10) {
             unlockAchievement(25)
@@ -253,7 +254,6 @@ const RootAchievements = (props) => {
             unlockAchievement(36)
         }
     }, [totalCorrectNotes])
-
 
     return null;
 }

@@ -63,6 +63,7 @@ const ExtraLines = (props) => {
             setExtraLineBass2(0)
         }
     }, [notePosPx])
+    
     return ( 
         <div className="extraLinesContainer">
             <svg
