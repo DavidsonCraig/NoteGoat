@@ -35,7 +35,6 @@ export default function SightRead() {
         baseUrl: "https://tonejs.github.io/audio/berklee/",
     }).toDestination()
     x.volume.value = 0
-    console.log("ReRender")
     return x
   }, [])
 

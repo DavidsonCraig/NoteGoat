@@ -18,7 +18,7 @@ export default function Settings() {
       localStorage.clear()
       window.confirm("Progress has been wiped, please refresh page")
     } else {
-      console.log("no wipe")
+      console.log("Data reset aborted")
     }
   })
 

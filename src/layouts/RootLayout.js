@@ -8,10 +8,7 @@ import RootAchievements from "../components/RootAchievements";
 import ImageStore from "../components/ImageStore";
 
 export default function RootLayout() {
-    //Initialises base synth
     const [notesDown, setNotesDown] = useState({})
-    const refNotesDown = useRef({})
-
     const [difficulty, setDifficulty] = useState("0")
     const [keySignature, setKeySignature] = useState("CMaj")
     const [totalCorrectNotes, setTotalCorrectNotes] = useState(0)
@@ -19,13 +16,14 @@ export default function RootLayout() {
     const [midiStatus, setMidiStatus] = useState(null)
     const [numOfAchievementsUnlocked, setnumOfAchievementsUnlocked] = useState(0)
     const [imageStore, setImageStore] = useState({})
+    const [achievements, setAchievements] = useState(JSON.parse(localStorage.getItem("achievements")) || achievementsSource)
+    const [highScoreFacade, setHighScoreFacade] = useState(0)
+
     const mutePiano = useRef(false)
     const systemMute = useRef(false)
     const wakeLock = useRef(null)
+    const refNotesDown = useRef({})
 
-    const [achievements, setAchievements] = useState(JSON.parse(localStorage.getItem("achievements")) || achievementsSource)
-
-    const [highScoreFacade, setHighScoreFacade] = useState(0)
     //Stats for each key signature
     //Three blocks of four (Due to shallow comparison of react)
     //Block 1 = High score
@@ -51,6 +49,7 @@ export default function RootLayout() {
     const [statsGFlatMaj, setStatsGFlatMaj] = useState(JSON.parse(localStorage.getItem("GFlatMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
     const [statsCFlatMaj, setStatsCFlatMaj] = useState(JSON.parse(localStorage.getItem("CFlatMaj")) || [0,0,0,0,0,0,0,0,0,0,0,0])
 
+    //Stats
     const getStats = ((x) => {
         switch(keySignature) {
             //chromatic
@@ -160,6 +159,17 @@ export default function RootLayout() {
         if (x > 0) {
             save(tmp)
         }
+    })
+
+    const save = ((x) => {
+        const keyStats = JSON.stringify(x)
+        localStorage.setItem(`${keySignature}`, keyStats)
+
+        const totalCorrect = JSON.stringify(totalCorrectNotes)
+        localStorage.setItem("totalCorrectNotes", totalCorrect)
+
+        const totalIncorrect = JSON.stringify(totalIncorrectNotes)
+        localStorage.setItem("totalIncorrectNotes", totalIncorrect)
     })
 
     //Update highscore facade
@@ -272,7 +282,7 @@ export default function RootLayout() {
         return pianoSynth
     },[])
 
-    ///////////////Midi Setup Functions
+    //Midi Setup Functions
     useEffect(() => {
          if (navigator.requestMIDIAccess) {
             navigator.requestMIDIAccess().then(MIDIsuccess, MIDIfailure);
@@ -287,7 +297,6 @@ export default function RootLayout() {
         let x = `${event.port.name}, State: ${event.port.state}`
         console.log(x)
         setMidiStatus(x)
-        
     })
 
     const noteOn = ((note, velocity) => {
@@ -317,15 +326,15 @@ export default function RootLayout() {
         //May be more MIDI signal numbers to research
         if (synth.loaded) {
             switch (command) {
+                case 128:
+                    noteOff(note)
+                    break
                 case 144:
                     if (velocity > 0) {
                         noteOn(note, velocity)
                     } else {
                         noteOff(note)
                     }
-                    break
-                case 128:
-                    noteOff(note)
                     break
             }
         }
@@ -339,17 +348,6 @@ export default function RootLayout() {
         inputs.forEach((input) => {
             input.onmidimessage = handleInput
         });
-    })
-
-    const save = ((x) => {
-        const keyStats = JSON.stringify(x)
-        localStorage.setItem(`${keySignature}`, keyStats)
-
-        const totalCorrect = JSON.stringify(totalCorrectNotes)
-        localStorage.setItem("totalCorrectNotes", totalCorrect)
-
-        const totalIncorrect = JSON.stringify(totalIncorrectNotes)
-        localStorage.setItem("totalIncorrectNotes", totalIncorrect)
     })
 
     //Wake lock
