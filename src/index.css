@@ -1,10 +1,11 @@
-.abcjs-note.filled {
-    fill: red;
-}
-
 /* Root */
 :root {
-    --note-height: -2px
+    --note-height: -2px;
+    --backgroundColor: #f2d8d8ff;
+    --color1: #00274aff;
+    --color2: white;
+    --highlightColor: #4ec091ff;
+    --warningColor: #c04e7eff;
 }
 
 html {
@@ -14,7 +15,8 @@ html {
 body {
     margin: 0px;
     height: 100%;
-    background-color: #f2d8d8ff;
+    background-color: var(--backgroundColor);
+    font-family: Roboto;
 }
 
 #root {
@@ -39,8 +41,6 @@ body {
     justify-content: center;
 }
 
-
-
 /* Timer.js */
 .timerContainer {
     width: 100%;
@@ -61,7 +61,7 @@ body {
 
 .timerBody {
     height: 2.5vh;
-    background-color: #00274aff;
+    background-color: var(--color1);
     display: flex;
     align-items: center;
     padding-left: 10px;
@@ -71,7 +71,7 @@ body {
 .timeRemaining {
     width: 100%;
     height: 1.5vh;
-    background-color: #f2d8d8ff;
+    background-color: var(--backgroundColor);
 }
 
 /* Piano Helper */
@@ -103,8 +103,8 @@ body {
 
 .whiteNote {
     flex-grow: 1;
-    background-color: #f2d8d8ff;
-    border-color: #00274aff;
+    background-color: var(--backgroundColor);
+    border-color: var(--color1);
     border: 1px;
     border-style: solid;
 }
@@ -152,8 +152,8 @@ body {
     border: none;
     text-align: center;
     font-family: 'Roboto';
-    background-color: #00274aff;
-    color: white;
+    background-color: var(--color1);
+    color:var(--color2);
     font-size: 4vh;
 }
 
@@ -180,8 +180,6 @@ body {
     top :var(--note-height);
     scale: 0.6;
 }
-
-
 
 /* Note display */
 .noteDisplay {
@@ -217,7 +215,13 @@ body {
     }
 }
 
-@media screen and (max-height: 500px) {
+@media screen and (max-height: 600px) {
+    .noteDisplay {
+        scale: 0.3;
+    }
+}
+
+@media screen and (max-width: 500px) {
     .noteDisplay {
         scale: 0.3;
     }
@@ -246,7 +250,7 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-size: 5vh;
-    color: #00274aff;
+    color: var(--color1);
 }
 
 #highestCombo {
@@ -280,8 +284,8 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-style: italic;
-    font-size: 150px;
-    color: #00274aff;
+    font-size: 16vmin;
+    color: var(--color1);
 }
 
 .innerTitleContainer {
@@ -299,14 +303,14 @@ body {
     text-decoration: none;
     font-family: Roboto;
     font-weight: 100;
-    font-size: 60px;
-    color: #00274aff;
+    font-size: 6vmin;
+    color: var(--color1);
     transition: font-size 0.15s ease-in-out;
 
 }
 
 #splashStart:hover {
-    font-size: 70px;
+    font-size: 8vmin;
 }
 
 /* Main */
@@ -329,13 +333,13 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-size: 5vw;
-    color: white;
+    color:var(--color2);
     margin-top: 2vh;
     margin-bottom: 2vh;
-    background-color: #00274aff;
+    background-color: var(--color1);
     padding: 5px;
-    padding-right: 90px;
-    padding-left: 90px;
+    padding-right: 5vw;
+    padding-left: 5vw;
     transition: width 0.15s ease-in-out;
     width: 30vw;
 }
@@ -368,19 +372,19 @@ body {
 }
 
 .backButton {
-    font-size: 2vw;
+    font-size: 2vmax;
     padding-right: 5vw;
     padding-left: 5vw;
     text-decoration: none;
     font-family: Roboto;
     font-weight: 100;
-    color: white;
+    color:var(--color2);
     margin-top: 2vh;
     margin-bottom: 2vh;
-    background-color: #00274aff;
+    background-color: var(--color1);
     padding: 5px;
-    padding-right: 90px;
-    padding-left: 90px;
+    padding-right: 5vw;
+    padding-left: 5vw;
     transition: font-size 0.15s ease-in-out;
 
 }
@@ -406,7 +410,7 @@ body {
 .achievementsScroller {
     width: 50vw;
     height: 70vh;
-    background-color: #00274aff;
+    background-color: var(--color1);
     overflow: auto;
 }
 
@@ -420,16 +424,16 @@ body {
     margin: 0;
     font-family: Roboto;
     font-weight: 100;
-    font-size: 1vw;
-    color: white;
+    font-size: 2vh;
+    color:var(--color2);
 }
 
 .achievementName {
     margin: 0;
     font-family: Roboto;
     font-weight: 100;
-    font-size: 2vw;
-    color: white;
+    font-size: 4vh;
+    color:var(--color2);
 }
 
 .achievementsListSubContainer {
@@ -443,8 +447,8 @@ body {
     text-decoration: none;
     font-family: Roboto;
     font-weight: 100;
-    font-size: 2vw;
-    color: white;
+    font-size: 4vh;
+    color:var(--color2);
     border-style: solid;
     border-color: #00182E;
     display: flex;
@@ -456,11 +460,11 @@ body {
     text-decoration: none;
     font-family: Roboto;
     font-weight: 100;
-    font-size: 2vw;
-    color: white;
+    font-size: 4vh;
+    color:var(--color2);
     border-style: solid;
     border-color: #00182E;
-    background-color: #4ec091ff;
+    background-color: var(--highlightColor);
     display: flex;
     align-items: center;
     padding: 0 2vw;
@@ -476,7 +480,7 @@ body {
 
 /* ScrollBar */
 ::-webkit-scrollbar {
-    background-color: #00274aff;
+    background-color: var(--color1);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -485,7 +489,7 @@ body {
 
 /* Toast */
 .toastTitle {
-    font-size: 1.5vw;
+    font-size: 3vh;
     padding: 0;
     margin: 0;
     font-family: Roboto;
@@ -493,7 +497,7 @@ body {
 }
 
 .toastSubtitle {
-    font-size: 0.8vw;
+    font-size: 1.5vh;
     padding: 0;
     margin: 0;
     font-family: Roboto;
@@ -516,8 +520,8 @@ body {
 .tutorialModalTitle {
     font-family: Roboto;
     font-weight: 100;
-    font-size: 7vh;
-    color: white;
+    font-size: 7vmin;
+    color:var(--color2);
     margin: 2vh;
 }
 
@@ -525,12 +529,12 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-size: 2.2vh;
-    color: white;
+    color:var(--color2);
     padding: 2vh 4vw;
 }
 
 .tutorialModalOkButton {
-    background-color: white;
+    background-color:var(--color2);
     color: black;
     font-size: 5vh;
     border: none;
@@ -542,7 +546,7 @@ body {
 }
 
 .tutorialModalOkButton:hover {
-    background-color: #4ec091ff;
+    background-color: var(--highlightColor);
     color: black;
 }
 
@@ -560,7 +564,7 @@ body {
     background-color: rgb(0, 39, 74);
     flex-direction: column;
     align-items: center;
-    border-top: 10vh solid #f2d8d8ff;
+    border-top: 10vh solid var(--backgroundColor);
     border-bottom: 10vh solid #f2d8d8;
     width: 100vw;
 }
@@ -570,23 +574,8 @@ body {
 
 .tutorialTextContainer {
     overflow: auto;
-    height: 40vh;
+    height: 38vh;
     width: 35vw;
-}
-
-@media (orientation: portrait) {
-    .tutorialModalInnerContainer {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        margin: 0;
-    }
-    .tutorialImage {
-        height: min(40vh, 30vw);
-    }
-    .tutorialModalTitle {
-        font-size: 5vw;
-    }
 }
 
 .tutorialContainer {
@@ -600,9 +589,8 @@ body {
 .tutorialTaskText {
     font-family: Roboto;
     font-weight: 100;
-    font-size: 2.2vh;
-    color: #00274aff;
-    font-size: 6vh;
+    color: var(--color1);
+    font-size: 6vmin;
     margin-top: 5vh;
     margin-bottom: 1vh;
 }
@@ -611,14 +599,14 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-size: 2.2vh;
-    color: #00274aff;
+    color: var(--color1);
     font-size: 4vh;
     margin: 0;
 }
 
 .tutorialHelpButton {
-    background-color: #00274aff;
-    color: white;
+    background-color: var(--color1);
+    color:var(--color2);
     font-size: 5vh;
     border: none;
     font-family: Roboto;
@@ -648,7 +636,7 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-size: 2.2vh;
-    color: #00274aff;
+    color: var(--color1);
     font-size: 6vh;
     margin-bottom: 30vh;
     margin-top: 10vh;
@@ -671,26 +659,25 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-size: 8vh;
-    color: #00274aff;
+    color: var(--color1);
 }
 
 .midiStatus {
     font-family: Roboto;
     font-weight: 100;
     font-size: 4vh;
-    color: white;
-    background-color: #00274aff;
+    color:var(--color2);
+    background-color: var(--color1);
     padding: 1vh;
     margin: 1.5vh;
-
 }
 
 .muteButton {
     font-family: Roboto;
     font-weight: 100;
     font-size: 4vh;
-    color: white;
-    background-color: #00274aff;
+    color:var(--color2);
+    background-color: var(--color1);
     padding: 1vh;
     border: none;
     margin: 1.5vh;
@@ -701,13 +688,48 @@ body {
     font-family: Roboto;
     font-weight: 100;
     font-size: 4vh;
-    color: white;
-    background-color: #c04e7eff;
+    color:var(--color2);
+    background-color: var(--warningColor);
     padding: 1vh;
     border: none;
     margin: 1.5vh;
 }
 
-.goat {
-    height: 35vh;
+
+@media (orientation: portrait) {
+    /* Piano helper */
+    .pianoHelperInnerContainer {
+        margin: 0;
+    }
+
+    /* Tutorial */
+    .tutorialModalInnerContainer {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0;
+    }
+    .tutorialImage {
+        height: 20vh
+    }
+
+    .tutorialTextContainer {
+        width: 100vw;
+    }
+
+    .tutorialTaskText {
+        margin-top: 10vh;
+    }
+
+    .sightReadOptionContainer {
+        width: 100%;
+    }
+
+    .timerInnerContainer {
+        margin: 0;
+    }
+
+    .achievementsScroller {
+        width: 100vw;
+    }
 }

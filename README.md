@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Note Goat #
+[Note Goat](https://davidsoncraig.github.io/NoteGoat) is a web application that teaches you how to read piano sheet music. Specifically, it helps build the muscle memory required for the fluid reading of sheet music. The application has MIDI support, where you can use a MIDI device to interact with the app. Alternatively, you may use your mouse to click notes on the in-built piano. The application features three main modes.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+__Tutorial__
+The tutorial slowly introduces the notes within the first octave one by one while also providing the foundation in music theory required to read sheet music.
 
-In the project directory, you can run:
+![Tutorial](https://github.com/DavidsonCraig/NoteGoat/assets/116437030/56618636-d598-4e63-be13-c744778ece3d)
 
-### `npm start`
+__Arcade__
+The arcade mode tasks you to get as high of a streak of correct notes in a row as possible whilst staying within the given time limit.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+![Arcade](https://github.com/DavidsonCraig/NoteGoat/assets/116437030/bfabe498-ccbe-40bf-9f39-a69727add2db)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+There are options to change the key signature to any within the circle of fifths and additional difficulty options.
 
-### `npm test`
+![Key-signatures](https://github.com/DavidsonCraig/NoteGoat/assets/116437030/71ad1c1a-672c-49ac-9a86-219ad400d276)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+__Freeplay__
+The freeplay mode allows you to play the piano without any distractions. It is velocity sensitive for MIDI devices that support it.
 
-### `npm run build`
+![Freeplay](https://github.com/DavidsonCraig/NoteGoat/assets/116437030/471abeb9-8691-4254-9ca6-d5ea738ae79a)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+__Achievements__
+There are over 400 achievements to unlock on your journey to becoming a sheet music reading prodigy.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Achievements](https://github.com/DavidsonCraig/NoteGoat/assets/116437030/1496cf77-2d37-4752-b3c2-ec0730b5dbbf)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+__Technical__
 
-### `npm run eject`
+This application was made using:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+* React
+* React-router
+* tone.js
+* React-Toastify
+* Salamander Grand piano
+* anime.js

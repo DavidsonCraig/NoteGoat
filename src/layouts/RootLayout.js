@@ -214,7 +214,7 @@ export default function RootLayout() {
                    position: "bottom-left",
                    autoClose: 3000,
                    hideProgressBar: true,
-                   closeButton: false,
+                   closeButton: true,
                    pauseOnHover: true,
                    draggable: false,
                    progress: undefined,

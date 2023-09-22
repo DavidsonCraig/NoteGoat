@@ -103,7 +103,7 @@ export default function SightRead() {
       <SightReadAchievements prevCombo={prevCombo}></SightReadAchievements>
       <NoteDisplay note={note}></NoteDisplay>
       <Combo combo={combo} prevCombo={prevCombo}></Combo>
-      <Timer comboTime={3000} combo={combo} resetCombo={resetCombo}></Timer>
+      <Timer comboTime={5000} combo={combo} resetCombo={resetCombo}></Timer>
       <PianoHelper highlightedNotes={[note]} combo={combo} showNotes={showNotes}></PianoHelper>
       <div className="optionContainer">
         <KeySelector></KeySelector>

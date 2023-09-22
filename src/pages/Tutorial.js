@@ -14,6 +14,7 @@ const Tutorial = () => {
     const outletContext = useOutletContext()
     const notesDown = outletContext.notesDown
     const mutePiano = outletContext.mutePiano
+    const setKeySignature = outletContext.setKeySignature
     const imageStore = outletContext.imageStore
     const tutorial_1 = imageStore.tutorial_1
     
@@ -169,6 +170,10 @@ const Tutorial = () => {
 
     useEffect(() => {
         mutePiano.current = false
+    }, [])
+
+    useEffect(() => {
+        setKeySignature("CMaj")
     }, [])
 
     return ( 
