@@ -215,7 +215,7 @@ body {
     }
 }
 
-@media screen and (max-height: 600px) {
+@media screen and (max-height: 630px) {
     .noteDisplay {
         scale: 0.3;
     }
@@ -474,7 +474,7 @@ body {
     text-decoration: none;
     font-family: Roboto;
     font-weight: 100;
-    font-size: 8vh;
+    font-size: 8vmin;
     color: #00182E;
 }
 
@@ -731,5 +731,6 @@ body {
 
     .achievementsScroller {
         width: 100vw;
+        height: 100%;
     }
 }
