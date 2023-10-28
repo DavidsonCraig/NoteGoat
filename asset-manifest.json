@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/NoteGoat/static/css/main.95508db1.css",
+    "main.js": "/NoteGoat/static/js/main.9dfadf9f.js",
+    "static/media/tutorial_15.png": "/NoteGoat/static/media/tutorial_15.50f72db6c27314e8a954.png",
+    "static/media/tutorial_16.png": "/NoteGoat/static/media/tutorial_16.b67cc8e2efd64471bd39.png",
+    "static/media/tutorial_14.png": "/NoteGoat/static/media/tutorial_14.4ace98c664193bfdb1de.png",
+    "static/media/tutorial_13.png": "/NoteGoat/static/media/tutorial_13.d35b01cdf8e8dee489c2.png",
+    "static/media/tutorial_17.png": "/NoteGoat/static/media/tutorial_17.31657a90d33c2908d7f8.png",
+    "static/media/tutorial_11.png": "/NoteGoat/static/media/tutorial_11.441f141f70b0cbc82e4d.png",
+    "static/media/tutorial_9.png": "/NoteGoat/static/media/tutorial_9.bee736cd14daab92a524.png",
+    "static/media/tutorial_12.png": "/NoteGoat/static/media/tutorial_12.f99317891c4e5668471a.png",
+    "static/media/tutorial_10.png": "/NoteGoat/static/media/tutorial_10.d5b1657e8d45d48c9d53.png",
+    "static/media/tutorial_8.png": "/NoteGoat/static/media/tutorial_8.e7ed1c68e12007778566.png",
+    "static/media/tutorial_6.png": "/NoteGoat/static/media/tutorial_6.8f5166981a70d9f0cbaf.png",
+    "static/media/tutorial_2.png": "/NoteGoat/static/media/tutorial_2.c7934ff638f962abb72c.png",
+    "static/media/tutorial_7.png": "/NoteGoat/static/media/tutorial_7.c068ba05f2f3f56ac16c.png",
+    "static/media/tutorial_1.png": "/NoteGoat/static/media/tutorial_1.68a1568090c072a4543d.png",
+    "static/media/tutorial_5.png": "/NoteGoat/static/media/tutorial_5.ad4043002cef9c404192.png",
+    "static/media/tutorial_3.png": "/NoteGoat/static/media/tutorial_3.2b75e2bdd08834c319ca.png",
+    "static/media/tutorial_4.png": "/NoteGoat/static/media/tutorial_4.b5a372c1852f08e0c851.png",
+    "index.html": "/NoteGoat/index.html",
+    "main.95508db1.css.map": "/NoteGoat/static/css/main.95508db1.css.map",
+    "main.9dfadf9f.js.map": "/NoteGoat/static/js/main.9dfadf9f.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.95508db1.css",
+    "static/js/main.9dfadf9f.js"
+  ]
+}
