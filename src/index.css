@@ -570,6 +570,7 @@ body {
 }
 .tutorialImage {
     height: min(40vh, 20vw);
+    aspect-ratio: 601/378;
 }
 
 .tutorialTextContainer {
