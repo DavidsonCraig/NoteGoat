@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/NoteGoat/static/css/main.95508db1.css",
+    "main.css": "/NoteGoat/static/css/main.d3b35c15.css",
     "main.js": "/NoteGoat/static/js/main.9dfadf9f.js",
     "static/media/tutorial_15.png": "/NoteGoat/static/media/tutorial_15.50f72db6c27314e8a954.png",
     "static/media/tutorial_16.png": "/NoteGoat/static/media/tutorial_16.b67cc8e2efd64471bd39.png",
@@ -20,11 +20,11 @@
     "static/media/tutorial_3.png": "/NoteGoat/static/media/tutorial_3.2b75e2bdd08834c319ca.png",
     "static/media/tutorial_4.png": "/NoteGoat/static/media/tutorial_4.b5a372c1852f08e0c851.png",
     "index.html": "/NoteGoat/index.html",
-    "main.95508db1.css.map": "/NoteGoat/static/css/main.95508db1.css.map",
+    "main.d3b35c15.css.map": "/NoteGoat/static/css/main.d3b35c15.css.map",
     "main.9dfadf9f.js.map": "/NoteGoat/static/js/main.9dfadf9f.js.map"
   },
   "entrypoints": [
-    "static/css/main.95508db1.css",
+    "static/css/main.d3b35c15.css",
     "static/js/main.9dfadf9f.js"
   ]
 }
